@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:orientation="horizontal"
+    android:id="@+id/topbar">
+
+    <ImageButton
+        android:layout_width="@dimen/dp_66"
+        android:layout_height="@dimen/dp_44"
+        android:background="@drawable/topbutton1"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:id="@+id/menu"/>
+    <ImageView
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_61"
+        android:src="@drawable/toplogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_15"/>
+    <ImageButton
+        android:layout_width="@dimen/dp_98"
+        android:layout_height="@dimen/dp_98"
+        android:background="@drawable/topbutton2"
+        android:layout_alignParentRight="true"
+        android:id="@+id/search"/>
+
+</RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_300"
+    android:layout_above="@id/bottombar"
+    android:gravity="center">
+    <ImageButton
+        android:layout_width="@dimen/dp_174"
+        android:layout_height="@dimen/dp_230"
+        android:background="@drawable/add"
+        android:layout_marginBottom="@dimen/dp_30"/>
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_209"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/bottombar"
+    android:orientation="horizontal"
+    android:id="@+id/bottombar">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+    <ImageButton
+        android:id="@+id/bt1"
+        android:layout_width="@dimen/dp_130"
+        android:layout_height="@dimen/dp_130"
+        android:background="@drawable/bt1"
+        android:layout_marginTop="@dimen/dp_10"/>
+     <TextView
+         android:layout_width="@dimen/dp_150"
+         android:layout_height="@dimen/dp_50"
+         android:text="账单"
+         android:textColor="@color/white"
+         android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/bt2"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_130"
+            android:background="@drawable/bt2"
+            android:layout_marginTop="@dimen/dp_10"/>
+        <TextView
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_50"
+            android:text="苗圃"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/bt3"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_140"
+            android:background="@drawable/bt3" />
+        <TextView
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_50"
+            android:text="种草"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/bt4"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_130"
+            android:background="@drawable/bt4"
+            android:layout_marginTop="@dimen/dp_10"/>
+        <TextView
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_50"
+            android:text="我的"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+</LinearLayout>
+</RelativeLayout>
