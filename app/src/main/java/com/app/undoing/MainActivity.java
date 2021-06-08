@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.app.undoing.Adapter.DoingListAdapter;
 import com.app.undoing.Content.DoingListItem;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        TextView yy=(TextView) findViewById(R.id.year);
+        yy.setText(year);
+        TextView mm=(TextView) findViewById(R.id.year);
+        mm.setText(month);
+        TextView dd=(TextView) findViewById(R.id.year);
+        dd.setText(day);
         doing_list = (ListView) findViewById(R.id.doingList);
         initList =new LinkedList<DoingListItem>();
         initList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit));
