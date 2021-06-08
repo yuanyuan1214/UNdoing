@@ -15,6 +15,7 @@ import com.app.undoing.Content.DoingListItem;
 
 import java.util.Calendar;
 import java.util.LinkedList;
+import com.app.undoing.R;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
