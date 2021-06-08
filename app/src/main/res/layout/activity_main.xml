@@ -35,18 +35,31 @@
         android:id="@+id/search"/>
 
 </RelativeLayout>
+
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/dp_60"
+    android:layout_below="@+id/topbar"
+    android:layout_above="@id/addList"
+    android:id="@+id/doingList">
+
+</ListView>
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_300"
+    android:id="@+id/addList"
     android:layout_above="@id/bottombar"
     android:gravity="center">
+
     <ImageButton
         android:layout_width="@dimen/dp_174"
         android:layout_height="@dimen/dp_230"
         android:background="@drawable/add"
         android:layout_marginBottom="@dimen/dp_30"/>
 </LinearLayout>
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_209"

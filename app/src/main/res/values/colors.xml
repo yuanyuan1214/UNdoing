@@ -14,4 +14,5 @@
     <color name="green">#76CE9C</color>
     <color name="green_line">#2ED47A</color>
     <color name="transparent">#00000000</color>
+    <color name="list_gray">#F5F5F5</color>
 </resources>

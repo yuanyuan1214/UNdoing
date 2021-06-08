@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="itemContentStyle">
+        <item name="android:textSize">
+            @dimen/sp_36
+        </item>
+
+        <item name="android:textColor">
+            #ADADAD
+        </item>
+    </style>
+    <style name="itemCostStyle">
+        <item name="android:textSize">
+            @dimen/sp_48
+        </item>
+
+        <item name="android:textColor">
+            #CE7676
+        </item>
+    </style>
+</resources>

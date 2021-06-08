@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="itemCostStyle">
+        <item name="android:textSize">
+            @dimen/sp_48
+        </item>
+
+        <item name="android:letterSpacing">
+            0.1
+        </item>
+
+        <item name="android:textColor">
+            #CE7676
+        </item>
+    </style>
+</resources>
