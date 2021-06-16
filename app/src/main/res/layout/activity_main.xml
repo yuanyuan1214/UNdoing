@@ -55,7 +55,8 @@
             android:letterSpacing="0.5"
             android:text="2021"
             android:textColor="@color/green"
-            android:textSize="@dimen/sp_40" />
+            android:fontFamily="@font/post_no_bills_jaffna_medium"
+             />
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,7 +75,8 @@
             android:letterSpacing="0.5"
             android:text="6"
             android:textColor="@color/green"
-            android:textSize="@dimen/sp_40" />
+            android:fontFamily="@font/post_no_bills_jaffna_medium"
+             />
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,7 +95,8 @@
             android:letterSpacing="0.5"
             android:text="6"
             android:textColor="@color/green"
-            android:textSize="@dimen/sp_40" />
+            android:id="@+id/day"
+            android:fontFamily="@font/post_no_bills_jaffna_medium"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -119,7 +122,9 @@
             android:letterSpacing="0.5"
             android:text="27"
             android:textColor="@color/green"
-            android:textSize="@dimen/sp_40" />
+            android:id="@+id/week"
+            android:fontFamily="@font/post_no_bills_jaffna_medium"
+             />
 
         <TextView
             android:layout_width="wrap_content"
@@ -201,7 +206,8 @@
                         android:letterSpacing="0.1"
                         android:text="+264.0"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/sp_40"/>
+                        android:fontFamily="@font/post_no_bills_jaffna_medium"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -222,7 +228,8 @@
                         android:letterSpacing="0.1"
                         android:text="-1321.0"
                         android:textColor="@color/red_text"
-                        android:textSize="@dimen/sp_40"/>
+                        android:fontFamily="@font/post_no_bills_jaffna_medium"
+                        />
                 </LinearLayout>
 
             </LinearLayout>
@@ -252,7 +259,8 @@
                         android:letterSpacing="0.1"
                         android:text="+27"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/sp_40" />
+                        android:fontFamily="@font/post_no_bills_jaffna_medium"
+                         />
                 </LinearLayout>
 
                 <LinearLayout
@@ -273,7 +281,8 @@
                         android:letterSpacing="0.1"
                         android:text="-63"
                         android:textColor="@color/red_text"
-                        android:textSize="@dimen/sp_40" />
+                        android:fontFamily="@font/post_no_bills_jaffna_medium"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

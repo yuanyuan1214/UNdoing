@@ -33,12 +33,16 @@ public class MainActivity extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
         TextView yy=(TextView) findViewById(R.id.year);
         yy.setText(Integer.toString(year));
         TextView mm=(TextView) findViewById(R.id.month);
         mm.setText(Integer.toString(month));
         TextView dd=(TextView) findViewById(R.id.day);
         dd.setText(Integer.toString(day));
+        TextView ww=(TextView) findViewById(R.id.week);
+        ww.setText(Integer.toString(weekOfYear));
         doing_list = (ListView) findViewById(R.id.doingList);
         initList =new LinkedList<DoingListItem>();
         initList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit));
