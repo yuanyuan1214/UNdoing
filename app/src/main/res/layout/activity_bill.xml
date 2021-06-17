@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BillActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bill_top_bar"
+            android:id="@+id/bill_top_bar">
+            <!--    头部-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal"
+                android:id="@+id/topbar">
+
+                <ImageButton
+                    android:layout_width="@dimen/dp_66"
+                    android:layout_height="@dimen/dp_44"
+                    android:background="@drawable/topbutton_back"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:id="@+id/back"/>
+                <ImageView
+                    android:layout_width="@dimen/dp_260"
+                    android:layout_height="@dimen/dp_61"
+                    android:src="@drawable/toplogo2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp_15"/>
+                <ImageButton
+                    android:layout_width="@dimen/dp_98"
+                    android:layout_height="@dimen/dp_98"
+                    android:background="@drawable/topbutton2"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/search"/>
+
+            </RelativeLayout>
+
+            <!--    月、周、日切换,现在没写-->
+
+
+            <!--    正向账单和逆向账单的切换-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_20">
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bill_type_change"
+                    android:spinnerMode="dropdown"
+                    android:popupBackground="@drawable/radius_border"
+                    ></Spinner>
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

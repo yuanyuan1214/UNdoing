@@ -18,4 +18,14 @@
     <color name="green_line">#2ED47A</color>
     <color name="transparent">#00000000</color>
     <color name="list_gray">#F5F5F5</color>
+    <color name="list_img_pink">#FF7374</color>
+    <color name="list_img_orange">#FFB774</color>
+    <color name="list_img_yellow">#FFDA74</color>
+    <color name="list_img_brown">#EBEB80</color>
+    <color name="list_img_lightgreen">#B7FF74</color>
+    <color name="list_img_green">#74FF74</color>
+    <color name="list_img_blue">#ACD7F7</color>
+    <color name="list_img_purple">#ACAFF7</color>
+    <color name="bill_top_bar_green">#CCE9BE</color>
+    <color name="bill_type_change_green">#76CE9C</color>
 </resources>

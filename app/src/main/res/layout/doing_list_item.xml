@@ -8,12 +8,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="@dimen/dp_160"
             android:layout_height="@dimen/dp_160"
             android:layout_alignParentLeft="true"
-            android:id="@+id/item_img">
-        </ImageView>
+            android:gravity="center"
+            android:id="@+id/out_item_img">
+            <ImageView
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_70"
+                android:layout_gravity="center"
+                android:id="@+id/item_img">
+            </ImageView>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
