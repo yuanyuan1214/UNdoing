@@ -1,5 +1,8 @@
 package com.app.undoing.Content;
 
+import com.app.undoing.R;
+
+import java.util.Date;
 import java.util.List;
 
 public class RecommendListItem {
@@ -8,13 +11,44 @@ public class RecommendListItem {
     private double recommend_save;
     private int recommend_image;
     private List<Integer> recommend_save_count;
+    private int img_background;
+    private Date recommend_date;
 
-    public RecommendListItem(String content,String detail, double save,int image,List<Integer> save_count){
+
+    public RecommendListItem(String content,String detail, double save,int image,List<Integer> save_count,Date recommend_date){
         this.recommend_content=content;
         this.recommend_detail=detail;
         this.recommend_save=save;
         this.recommend_image=image;
         this.recommend_save_count=save_count;
+        this.recommend_date=recommend_date;
+        int color_select=(int)(1+Math.random()*8);
+        switch (color_select){
+            case 1:
+                this.img_background= R.color.list_img_pink;
+                break;
+            case 2:
+                this.img_background=R.color.list_img_orange;
+                break;
+            case 3:
+                this.img_background=R.color.list_img_yellow;
+                break;
+            case 4:
+                this.img_background=R.color.list_img_brown;
+                break;
+            case 5:
+                this.img_background=R.color.list_img_lightgreen;
+                break;
+            case 6:
+                this.img_background=R.color.list_img_green;
+                break;
+            case 7:
+                this.img_background=R.color.list_img_purple;
+                break;
+            case 8:
+                this.img_background=R.color.list_img_blue;
+                break;
+        }
     }
 
 
@@ -55,5 +89,21 @@ public class RecommendListItem {
 
     public void setRecommend_save_count(List<Integer> recommend_save_count) {
         this.recommend_save_count = recommend_save_count;
+    }
+
+    public int getImg_background() {
+        return img_background;
+    }
+
+    public void setImg_background(int img_background) {
+        this.img_background = img_background;
+    }
+
+    public Date getRecommend_date() {
+        return recommend_date;
+    }
+
+    public void setRecommend_date(Date recommend_date) {
+        this.recommend_date = recommend_date;
     }
 }
