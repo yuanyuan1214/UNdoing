@@ -18,6 +18,7 @@
             #CE7676
         </item>
     </style>
+
     <style name="itemSaveStyle">
         <item name="android:textSize">
             @dimen/sp_48
@@ -26,6 +27,16 @@
             #76CE9C
         </item>
     </style>
+
     <style name="MaterialStyle" parent="Theme.MaterialComponents.Light"/>
 
+    <style name="bill_date_text">
+        <item name="android:textSize">
+            @dimen/sp_36
+        </item>
+
+        <item name="android:textColor">
+            #ADADAD
+        </item>
+    </style>
 </resources>

@@ -18,7 +18,6 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            app:singleSelection="true"
-           app:selectionRequired="true"
            app:checkedButton="@id/btnWeek">
        <com.google.android.material.button.MaterialButton
            android:id="@+id/btnMonth"

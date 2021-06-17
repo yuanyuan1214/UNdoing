@@ -1,7 +1,6 @@
 package com.app.undoing.Adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,31 +11,32 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.undoing.Content.DoingListItem;
+import com.app.undoing.Content.UnDoListItem;
+import com.app.undoing.MainActivity;
 import com.app.undoing.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 
-public class DoingListAdapter extends BaseAdapter {
+public class UndoListAdapter extends BaseAdapter {
 
-    private LinkedList<DoingListItem> itemData;
-    //context是什么好像是
+    private LinkedList<UnDoListItem> itemData;
     private Context context;
 
-    public DoingListAdapter(Context context) {
-        this.itemData = new LinkedList<DoingListItem>();
+    public UndoListAdapter(Context context) {
+        this.itemData = new LinkedList<UnDoListItem>();
         this.context=context;
     }
 
-    public DoingListAdapter(LinkedList<DoingListItem> itemData,Context context){
+    public UndoListAdapter(LinkedList<UnDoListItem> itemData,Context context){
         this.itemData=itemData;
         this.context=context;
     }
 
-    public void addItemData(DoingListItem listItem) {
+    public void addItemData(UnDoListItem listItem) {
         itemData.add(listItem);
         notifyDataSetChanged();
     }
@@ -60,15 +60,16 @@ public class DoingListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //加载布局
-        convertView = LayoutInflater.from(context).inflate(R.layout.doing_list_item,parent,false);
+        convertView = LayoutInflater.from(context).inflate(R.layout.undo_list_item,parent,false);
 
         //判断是billActivity内的
         if (parent.getId()==R.id.bill_list) {
             //设置日期部分
-            if ((position == 0)||(itemData.get(position).getDoing_date()!=itemData.get(position-1).getDoing_date())) {
-                LinearLayout out_doing_list_item=(LinearLayout)convertView.findViewById(R.id.out_doing_list_item);
+            System.out.println("当前item的position是"+position);
+            if ((position == 0)||(itemData.get(position).getUndo_date()!=itemData.get(position-1).getUndo_date())) {
+                LinearLayout out_undo_list_item=(LinearLayout)convertView.findViewById(R.id.out_undo_list_item);
                 SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日-EEEE");
-                String dateOutput = sdf.format(itemData.get(position).getDoing_date());
+                String dateOutput = sdf.format(itemData.get(position).getUndo_date());
                 TextView dateView=new TextView(context);
                 dateView.setTextAppearance(R.style.bill_date_text);
                 dateView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -76,7 +77,7 @@ public class DoingListAdapter extends BaseAdapter {
                 lp.setMargins(20, 20, 10, 20);
                 dateView.setLayoutParams(lp);
                 dateView.setText(dateOutput);
-                out_doing_list_item.addView(dateView,0);
+                out_undo_list_item.addView(dateView,0);
             }
         }
 
@@ -87,9 +88,9 @@ public class DoingListAdapter extends BaseAdapter {
         TextView cost = (TextView) convertView.findViewById(R.id.item_cost);
         //设置内容
         outImg.setBackgroundColor(context.getResources().getColor(itemData.get(position).getImg_background()));
-        img.setBackgroundResource(itemData.get(position).getDoing_image());
-        content.setText(itemData.get(position).getDoing_content());
-        cost.setText(String.format("%.2f",itemData.get(position).getDoing_cost()));
+        img.setBackgroundResource(itemData.get(position).getUndo_image());
+        content.setText(itemData.get(position).getUndo_content());
+        cost.setText(String.format("%.2f",itemData.get(position).getUndo_cost()));
         //设置间隔背景
         LinearLayout outCost= (LinearLayout) convertView.findViewById(R.id.out_item_cost);
         LinearLayout outContent= (LinearLayout) convertView.findViewById(R.id.out_item_content);
@@ -106,4 +107,3 @@ public class DoingListAdapter extends BaseAdapter {
         return convertView;
     }
 }
-

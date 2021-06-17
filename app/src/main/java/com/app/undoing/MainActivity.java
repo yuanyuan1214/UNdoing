@@ -15,7 +15,11 @@ import android.widget.TextView;
 import com.app.undoing.Adapter.DoingListAdapter;
 import com.app.undoing.Content.DoingListItem;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import com.app.undoing.R;
 import java.util.List;
@@ -46,20 +50,11 @@ public class MainActivity extends AppCompatActivity {
         TextView ww=(TextView) findViewById(R.id.week);
         ww.setText(Integer.toString(weekOfYear));
         //设置list列表
-        doing_list = (ListView) findViewById(R.id.doingList);
-        initList =new LinkedList<DoingListItem>();
-        initList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit));
-        listAdapter = new DoingListAdapter(initList,MainActivity.this);
-        listAdapter.addItemData(new DoingListItem("五角场看电影",-48.00,R.drawable.dashicons_editor_video));
-        listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food));
-        listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart));
-        listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane));
-        listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets));
-        doing_list.setAdapter(listAdapter);
-        listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food));
-        listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart));
-        listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane));
-        listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets));
+        try {
+            setDoingList();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         //设置页面跳转
         ImageButton btn = (ImageButton) findViewById(R.id.bt1);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -69,5 +64,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void setDoingList() throws ParseException {
+        doing_list = (ListView) findViewById(R.id.doingList);
+        initList =new LinkedList<DoingListItem>();
+        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        Date date=dateFormat.parse("2021-06-17");
+        initList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit, date));
+        listAdapter = new DoingListAdapter(initList,MainActivity.this);
+        listAdapter.addItemData(new DoingListItem("五角场看电影",-48.00,R.drawable.dashicons_editor_video, date));
+        listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food, date));
+        listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart, date));
+        listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane,date));
+        listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets,date));
+        doing_list.setAdapter(listAdapter);
+        date=dateFormat.parse("2021-06-18");
+        listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food,date));
+        listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart,date));
+        listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane,date));
+        listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets,date));
     }
 }

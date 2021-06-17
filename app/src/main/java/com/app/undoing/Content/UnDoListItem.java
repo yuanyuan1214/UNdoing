@@ -4,18 +4,18 @@ import com.app.undoing.R;
 
 import java.util.Date;
 
-public class DoingListItem {
-    private String doing_content;
-    private double doing_cost;
-    private int doing_image;
+public class UnDoListItem {
+    private String undo_content;
+    private double undo_cost;
+    private int undo_image;
     private int img_background;
-    private Date doing_date;
+    private Date undo_date;
 
-    public DoingListItem(String content,double cost,int image,Date doing_date){
-        this.doing_content=content;
-        this.doing_cost=cost;
-        this.doing_image=image;
-        this.doing_date=doing_date;
+    public UnDoListItem(String content,double cost,int image,Date undo_date){
+        this.undo_content=content;
+        this.undo_cost=cost;
+        this.undo_image=image;
+        this.undo_date=undo_date;
         int color_select=(int)(1+Math.random()*8);
         System.out.println(color_select);
         //根据生成的随机数选择对应的颜色
@@ -47,28 +47,28 @@ public class DoingListItem {
         }
     }
 
-    public String getDoing_content(){
-        return this.doing_content;
+    public String getUndo_content(){
+        return this.undo_content;
     }
 
-    public void setDoing_content(String content){
-        this.doing_content=content;
+    public void setUndo_content(String content){
+        this.undo_content=content;
     }
 
-    public double getDoing_cost(){
-        return this.doing_cost;
+    public double getUndo_cost(){
+        return this.undo_cost;
     }
 
-    public void setDoing_cost(double cost){
-        this.doing_cost=cost;
+    public void setUndo_cost(double cost){
+        this.undo_cost=cost;
     }
 
-    public int getDoing_image(){
-        return this.doing_image;
+    public int getUndo_image(){
+        return this.undo_image;
     }
 
-    public void setDoing_image(int image){
-        this.doing_image=image;
+    public void setUndo_image(int image){
+        this.undo_image=image;
     }
 
     public int getImg_background() {
@@ -79,11 +79,11 @@ public class DoingListItem {
         this.img_background=img_background;
     }
 
-    public Date getDoing_date() {
-        return this.doing_date;
+    public Date getUndo_date() {
+        return this.undo_date;
     }
 
-    public void setDoing_date(Date date) {
-        this.doing_date=date;
+    public void setUndo_date(Date date) {
+        this.undo_date=date;
     }
 }

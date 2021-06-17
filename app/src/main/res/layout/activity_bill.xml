@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +54,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:singleSelection="true"
-                app:selectionRequired="true"
                 android:layout_gravity="center"
                 app:checkedButton="@id/btnWeek">
                 <com.google.android.material.button.MaterialButton
@@ -105,11 +104,12 @@
             </LinearLayout>
         </LinearLayout>
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_margin="@dimen/dp_60"
+            android:id="@+id/bill_list">
+        </ListView>
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
