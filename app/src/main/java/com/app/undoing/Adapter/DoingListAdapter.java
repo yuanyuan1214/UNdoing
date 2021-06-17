@@ -59,24 +59,24 @@ public class DoingListAdapter extends BaseAdapter {
         convertView = LayoutInflater.from(context).inflate(R.layout.doing_list_item,parent,false);
 
         //获取引用布局资源
+        LinearLayout outImg=(LinearLayout) convertView.findViewById(R.id.out_item_img);
         ImageView img = (ImageView) convertView.findViewById(R.id.item_img);
         TextView content = (TextView) convertView.findViewById(R.id.item_content);
         TextView cost = (TextView) convertView.findViewById(R.id.item_cost);
         //设置内容
+        outImg.setBackgroundColor(context.getResources().getColor(itemData.get(position).getImg_background()));
         img.setBackgroundResource(itemData.get(position).getDoing_image());
         content.setText(itemData.get(position).getDoing_content());
         cost.setText(String.format("%.2f",itemData.get(position).getDoing_cost()));
         //设置间隔背景
+        LinearLayout outCost= (LinearLayout) convertView.findViewById(R.id.out_item_cost);
+        LinearLayout outContent= (LinearLayout) convertView.findViewById(R.id.out_item_content);
         if (position%2==0)
         {
-            LinearLayout outCost= (LinearLayout) convertView.findViewById(R.id.out_item_cost);
-            LinearLayout outContent= (LinearLayout) convertView.findViewById(R.id.out_item_content);
             outCost.setBackgroundColor(context.getResources().getColor(R.color.white));
             outContent.setBackgroundColor(context.getResources().getColor(R.color.white));
         }
         else {
-            LinearLayout outCost= (LinearLayout) convertView.findViewById(R.id.out_item_cost);
-            LinearLayout outContent= (LinearLayout) convertView.findViewById(R.id.out_item_content);
             outCost.setBackgroundColor(context.getResources().getColor(R.color.list_gray));
             outContent.setBackgroundColor(context.getResources().getColor(R.color.list_gray));
         }

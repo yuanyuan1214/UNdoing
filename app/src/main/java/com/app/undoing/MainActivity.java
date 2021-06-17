@@ -2,9 +2,11 @@ package com.app.undoing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mm.setText(Integer.toString(month));
         TextView dd=(TextView) findViewById(R.id.day);
         dd.setText(Integer.toString(day));
+        //设置list列表
         doing_list = (ListView) findViewById(R.id.doingList);
         initList =new LinkedList<DoingListItem>();
         initList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit));
@@ -53,28 +56,14 @@ public class MainActivity extends AppCompatActivity {
         listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart));
         listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane));
         listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets));
-        fixListViewHeight(doing_list);
-    }
-
-    public void fixListViewHeight(ListView listView) {
-        // 如果没有设置数据适配器，则ListView没有子项，返回。
-        ListAdapter listAdapter = listView.getAdapter();
-        int totalHeight = 0;
-        if (listAdapter == null) {
-            return;
-        }
-        for (int index = 0, len = listAdapter.getCount(); index < len; index++) {
-            View listViewItem = listAdapter.getView(index , null, listView);
-            // 计算子项View 的宽高
-            listViewItem.measure(0, 0);
-            // 计算所有子项的高度和
-            totalHeight += listViewItem.getMeasuredHeight();
-        }
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        // listView.getDividerHeight()获取子项间分隔符的高度
-        // params.height设置ListView完全显示需要的高度
-        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
+        //设置页面跳转
+        ImageButton btn = (ImageButton) findViewById(R.id.bt1);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this , BillActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
