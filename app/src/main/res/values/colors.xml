@@ -28,4 +28,5 @@
     <color name="list_img_purple">#ACAFF7</color>
     <color name="bill_top_bar_green">#CCE9BE</color>
     <color name="bill_type_change_green">#76CE9C</color>
+    <color name="tab_gray">#ADADAD</color>
 </resources>

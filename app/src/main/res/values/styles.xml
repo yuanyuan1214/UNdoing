@@ -26,4 +26,6 @@
             #76CE9C
         </item>
     </style>
+    <style name="MaterialStyle" parent="Theme.MaterialComponents.Light"/>
+
 </resources>

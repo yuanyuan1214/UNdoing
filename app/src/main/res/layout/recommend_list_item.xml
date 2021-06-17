@@ -14,7 +14,8 @@
             android:id="@+id/item_img"
             android:layout_width="@dimen/dp_160"
             android:layout_height="@dimen/dp_160"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/dashicons_cart"/>
 
         <LinearLayout
             android:id="@+id/out_item_content"
@@ -181,6 +182,9 @@
                 />
 
         </LinearLayout>
-    </LinearLayout>
+
+          </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,7 +48,44 @@
             </RelativeLayout>
 
             <!--    月、周、日切换,现在没写-->
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:theme="@style/MaterialStyle"
+                android:id="@+id/toggleGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                android:layout_gravity="center"
+                app:checkedButton="@id/btnWeek">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMonth"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="@dimen/dp_320"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_state_list"
+                    app:strokeColor="@color/white"
+                    android:backgroundTint="@color/background_color_state_list"
+                    android:text="月"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnWeek"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="@dimen/dp_320"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_state_list"
+                    app:strokeColor="@color/white"
+                    android:backgroundTint="@color/background_color_state_list"
+                    android:text="周"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDay"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="@dimen/dp_320"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_state_list"
+                    app:strokeColor="@color/white"
+                    android:backgroundTint="@color/background_color_state_list"
+                    android:text="日"/>
 
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <!--    正向账单和逆向账单的切换-->
             <LinearLayout
