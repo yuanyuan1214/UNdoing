@@ -315,7 +315,8 @@
         android:layout_width="@dimen/dp_174"
         android:layout_height="@dimen/dp_230"
         android:background="@drawable/add"
-        android:layout_marginBottom="@dimen/dp_30"/>
+        android:layout_marginBottom="@dimen/dp_30"
+        android:id="@+id/bookbutton"/>
 </LinearLayout>
 
 <LinearLayout

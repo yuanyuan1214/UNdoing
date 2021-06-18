@@ -72,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        ImageButton btnBook = (ImageButton) findViewById(R.id.bookbutton);
+        btnBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this , BookKeep.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void setDoingList() throws ParseException {

@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UNdoing">
+        <activity android:name=".BookKeep"  android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
             android:name=".BillActivity"
             android:label="@string/title_activity_bill"
-            android:theme="@style/Theme.UNdoing.NoActionBar"></activity>
-        <activity android:name=".RecommendList"></activity>
+            android:theme="@style/Theme.UNdoing.NoActionBar" />
+        <activity android:name=".RecommendList" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
