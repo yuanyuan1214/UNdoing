@@ -64,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        ImageButton btn3 = (ImageButton) findViewById(R.id.bt3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this , RecommendList.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void setDoingList() throws ParseException {

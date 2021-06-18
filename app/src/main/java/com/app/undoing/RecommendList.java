@@ -63,6 +63,10 @@ public class RecommendList extends AppCompatActivity {
         recommendList =new LinkedList<RecommendListItem>();
         recommendList.add(new RecommendListItem("衣物","UT联名T恤",130,R.drawable.dashicons_cart,new ArrayList<Integer>(Arrays.asList(2,1,2,2,2)),date));
         recommendListAdapter= new RecommendListAdapter(recommendList,RecommendList.this);
+        recommend_list.setAdapter(recommendListAdapter);
+        recommendListAdapter.addItemData(new RecommendListItem("美妆","KATE彩妆盒",200,R.drawable.dashicons_editor_video, new ArrayList<>(Arrays.asList(1, 1, 2, 2, 2)),date));
+        recommendListAdapter.addItemData(new RecommendListItem("数码","无线蓝牙耳机",230,R.drawable.dashicons_computer, new ArrayList<>(Arrays.asList(1, 1, 1, 2, 0)),date));
+        date=dateFormat.parse("2021-06-19");
         recommendListAdapter.addItemData(new RecommendListItem("美妆","KATE彩妆盒",200,R.drawable.dashicons_editor_video, new ArrayList<>(Arrays.asList(1, 1, 2, 2, 2)),date));
         recommendListAdapter.addItemData(new RecommendListItem("数码","无线蓝牙耳机",230,R.drawable.dashicons_computer, new ArrayList<>(Arrays.asList(1, 1, 1, 2, 0)),date));
     }

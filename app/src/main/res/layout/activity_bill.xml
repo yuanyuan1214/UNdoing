@@ -47,7 +47,7 @@
 
             </RelativeLayout>
 
-            <!--    月、周、日切换,现在没写-->
+            <!--    月、周、日切换-->
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:theme="@style/MaterialStyle"
                 android:id="@+id/toggleGroup"

@@ -70,6 +70,7 @@ public class RecommendListAdapter extends BaseAdapter {
             }
         }
         //获取引用布局资源
+        LinearLayout outItemImg=(LinearLayout)convertView.findViewById(R.id.out_item_img);
         ImageView img = (ImageView) convertView.findViewById(R.id.item_img);
         TextView content = (TextView) convertView.findViewById(R.id.item_content);
         TextView detail=(TextView) convertView.findViewById(R.id.item_content_detail);
@@ -81,28 +82,29 @@ public class RecommendListAdapter extends BaseAdapter {
         TextView save_count_4=convertView.findViewById(R.id.save_count_4);
 
         //设置内容
+        outItemImg.setBackgroundColor(context.getResources().getColor(itemData.get(position).getImg_background()));
         img.setBackgroundResource(itemData.get(position).getRecommend_image());
         content.setText(itemData.get(position).getRecommend_content());
         detail.setText(itemData.get(position).getRecommend_detail());
         save.setText(String.format("%.2f",itemData.get(position).getRecommend_save()));
         List<Integer> count_list=itemData.get(position).getRecommend_save_count();
-        save_count_0.setText(count_list.get(0));
-        save_count_1.setText(count_list.get(1));
-        save_count_2.setText(count_list.get(2));
-        save_count_3.setText(count_list.get(3));
-        save_count_4.setText(count_list.get(4));
+        save_count_0.setText(count_list.get(0).toString());
+        save_count_1.setText(count_list.get(1).toString());
+        save_count_2.setText(count_list.get(2).toString());
+        save_count_3.setText(count_list.get(3).toString());
+        save_count_4.setText(count_list.get(4).toString());
 
         //设置间隔背景
-        LinearLayout outCost= (LinearLayout) convertView.findViewById(R.id.out_item_cost);
-        LinearLayout outContent= (LinearLayout) convertView.findViewById(R.id.out_item_content);
+        LinearLayout outItem= (LinearLayout) convertView.findViewById(R.id.out_item_content);
+        LinearLayout recommendContent=(LinearLayout) convertView.findViewById(R.id.recommend_content);
         if (position%2==0)
         {
-            outCost.setBackgroundColor(context.getResources().getColor(R.color.white));
-            outContent.setBackgroundColor(context.getResources().getColor(R.color.white));
+            outItem.setBackgroundColor(context.getResources().getColor(R.color.white));
+            recommendContent.setBackgroundColor(context.getResources().getColor(R.color.white));
         }
         else {
-            outCost.setBackgroundColor(context.getResources().getColor(R.color.list_gray));
-            outContent.setBackgroundColor(context.getResources().getColor(R.color.list_gray));
+            outItem.setBackgroundColor(context.getResources().getColor(R.color.list_gray));
+            recommendContent.setBackgroundColor(context.getResources().getColor(R.color.list_gray));
         }
 
         return convertView;
