@@ -41,11 +41,11 @@ public class BillActivity extends AppCompatActivity {
     private int selectedItem;
 
     //正向账单
-    private LinkedList<DoingListItem> doingList;
+    public LinkedList<DoingListItem> doingList;
     //好像是用于处理ListView的动态添加的
     private DoingListAdapter doingListAdapter;
     //反向账单
-    private LinkedList<UnDoListItem> undoList;
+    public LinkedList<UnDoListItem> undoList;
     private UndoListAdapter undoListAdapter;
     private ListView Bill_list;
 

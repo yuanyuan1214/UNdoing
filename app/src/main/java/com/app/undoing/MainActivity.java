@@ -81,12 +81,12 @@ public class MainActivity extends AppCompatActivity {
         Date date=dateFormat.parse("2021-06-17");
         initList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit, date));
         listAdapter = new DoingListAdapter(initList,MainActivity.this);
+        doing_list.setAdapter(listAdapter);
         listAdapter.addItemData(new DoingListItem("五角场看电影",-48.00,R.drawable.dashicons_editor_video, date));
         listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food, date));
         listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart, date));
         listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane,date));
         listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets,date));
-        doing_list.setAdapter(listAdapter);
         date=dateFormat.parse("2021-06-18");
         listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food,date));
         listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart,date));

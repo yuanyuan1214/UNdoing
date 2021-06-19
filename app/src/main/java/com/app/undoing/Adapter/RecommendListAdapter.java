@@ -1,11 +1,13 @@
 package com.app.undoing.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,7 +16,9 @@ import androidx.annotation.RequiresApi;
 
 import com.app.undoing.Content.DoingListItem;
 import com.app.undoing.Content.RecommendListItem;
+import com.app.undoing.MainActivity;
 import com.app.undoing.R;
+import com.app.undoing.RecommendList;
 
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
@@ -26,6 +30,7 @@ public class RecommendListAdapter extends BaseAdapter {
     public RecommendListAdapter(LinkedList<RecommendListItem> itemData,Context context){
         this.itemData=itemData;
         this.context=context;
+        System.out.println("recommend: "+context);
     }
     public void addItemData(RecommendListItem listItem) {
         itemData.add(listItem);
@@ -38,7 +43,7 @@ public class RecommendListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return itemData.get(position);
     }
 
     @Override
@@ -80,6 +85,22 @@ public class RecommendListAdapter extends BaseAdapter {
         TextView save_count_2=convertView.findViewById(R.id.save_count_2);
         TextView save_count_3=convertView.findViewById(R.id.save_count_3);
         TextView save_count_4=convertView.findViewById(R.id.save_count_4);
+        Button add_btn=(Button) convertView.findViewById(R.id.add);
+        Button minus_btn=(Button) convertView.findViewById(R.id.minus);
+        add_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemData.remove(getItem(position));
+                notifyDataSetChanged();
+            }
+        });
+        minus_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemData.remove(getItem((position)));
+                notifyDataSetChanged();
+            }
+        });
 
         //设置内容
         outItemImg.setBackgroundColor(context.getResources().getColor(itemData.get(position).getImg_background()));
