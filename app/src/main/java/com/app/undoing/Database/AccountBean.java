@@ -5,6 +5,8 @@ public class AccountBean {
     String typename;
     String itemname;
     float itemmoney;
+    int imagenum;
+
     int year;
     int month;
     int day;
@@ -17,6 +19,10 @@ public class AccountBean {
 
     public float getItemmoney() {
         return itemmoney;
+    }
+
+    public int getImagenum() {
+        return imagenum;
     }
 
     public int getAir() {
@@ -71,6 +77,10 @@ public class AccountBean {
         this.id = id;
     }
 
+    public void setImagenum(int imagenum) {
+        this.imagenum = imagenum;
+    }
+
     public void setItemname(String itemname) {
         this.itemname = itemname;
     }
@@ -100,12 +110,13 @@ public class AccountBean {
 
     public AccountBean(){}
 
-    public AccountBean(int id,String typename,String itemname,float itemmoney,int year,int month,int day,int week,int water,int land,int air,int mineral,int animal)
+    public AccountBean(int id,String typename,String itemname,int imagenum,float itemmoney,int year,int month,int day,int week,int water,int land,int air,int mineral,int animal)
     {
         this.id=id;
         this.typename=typename;
         this.itemname=itemname;
         this.itemmoney=itemmoney;
+        this.imagenum=imagenum;
         this.year=year;
         this.month=month;
         this.day=day;

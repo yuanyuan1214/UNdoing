@@ -15,15 +15,15 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
       //创建正向账单表
-        String sql = "create table positivetb(id integer primary key autoincrement,typename varchar(10),itemname varchar(100),itemmoney real,year integer,month integer,day integer,week integer,water integer, land integer, air integer,mineral integer,animal integer)";
+        String sql = "create table positivetb(id integer primary key autoincrement,typename varchar(10),itemname varchar(100),itemmoney real,imagenum integer,year integer,month integer,day integer,week integer,water integer, land integer, air integer,mineral integer,animal integer)";
         db.execSQL(sql);
 
         //创建反向账单表
-        sql =  "create table negativetb(id integer primary key autoincrement,typename varchar(10),itemname varchar(100),itemmoney real,year integer,month integer,day integer,week integer,water integer, land integer, air integer,mineral integer,animal integer)";
+        sql =  "create table negativetb(id integer primary key autoincrement,typename varchar(10),itemname varchar(100),itemmoney real,imagenum integer,year integer,month integer,day integer,week integer,water integer, land integer, air integer,mineral integer,animal integer)";
         db.execSQL(sql);
 
         //创建种草清单表
-        sql =  "create table greedtb(id integer primary key autoincrement,typename varchar(10),itemname varchar(100),itemmoney real,year integer,month integer,day integer,week integer,water integer, land integer, air integer,mineral integer,animal integer)";
+        sql =  "create table greedtb(id integer primary key autoincrement,typename varchar(10),itemname varchar(100),itemmoney real,imagenum integer,year integer,month integer,day integer,week integer,water integer, land integer, air integer,mineral integer,animal integer)";
         db.execSQL(sql);
     }
 

@@ -28,6 +28,7 @@ import com.app.undoing.Database.TypeBean;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 public class BookKeep extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class BookKeep extends AppCompatActivity {
     String itemname;
     float itemmoney;
 
+    HashMap<String, Integer> typeImage;
     GridView typeGv;
     List<TypeBean>typeList;
     TypeBaseAdapter adapter;
@@ -48,6 +50,20 @@ public class BookKeep extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_keep);
         selectedItem=0;
+        typeImage.put("服饰",R.drawable.dashicons_cloth);
+        typeImage.put("饮食",R.drawable.dashicons_food);
+        typeImage.put("文具",R.drawable.dashicons_pets);   //缺失
+        typeImage.put("网购",R.drawable.dashicons_cart);
+        typeImage.put("交通",R.drawable.dashicons_plane);
+        typeImage.put("数码",R.drawable.dashicons_computer);
+        typeImage.put("水电",R.drawable.dashicons_fruit);   //缺失
+        typeImage.put("运动",R.drawable.dashicons_pets);    //缺失
+        typeImage.put("娱乐",R.drawable.dashicons_editor_video);  //缺失
+        typeImage.put("通信",R.drawable.dashicons_computer);    //缺失
+        typeImage.put("学习",R.drawable.dashicons_bottle);    //缺失
+        typeImage.put("美妆",R.drawable.dashicons_bottle);
+        typeImage.put("其他",R.drawable.dashicons_fruit);     //缺失
+
         //设置下拉选择框样式
         setSpinnerStyle();
 
@@ -96,7 +112,8 @@ public class BookKeep extends AppCompatActivity {
                     int month=c.get(Calendar.MONTH)+1;
                     int day=c.get(Calendar.DAY_OF_MONTH);
                     int week=c.get(Calendar.WEEK_OF_MONTH);
-                    AccountBean bean=new AccountBean(0,typename,itemname,itemmoney,year,month,day,week,1,0,1,1,0);
+                    int imagenum=typeImage.get(typename);
+                    AccountBean bean=new AccountBean(0,typename,itemname,imagenum,itemmoney,year,month,day,week,1,0,1,1,0);
                     if(selectedItem==0)
                     {
                         DBManager.insertItemToPositivetb(bean);

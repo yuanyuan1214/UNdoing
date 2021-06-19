@@ -25,6 +25,7 @@ public class DBManager {
         values.put("typename",bean.getTypename());
         values.put("itemname",bean.getItemname());
         values.put("itemmoney",bean.getItemmoney());
+        values.put("imagenum",bean.getImagenum());
         values.put("year",bean.getYear());
         values.put("month",bean.getMonth());
         values.put("day",bean.getDay());
