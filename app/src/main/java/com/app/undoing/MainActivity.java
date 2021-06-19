@@ -110,14 +110,14 @@ public class MainActivity extends AppCompatActivity {
             AccountBean positiveItem = positiveList.get(i);
             Calendar dateCalendar = new GregorianCalendar(positiveItem.getYear(),positiveItem.getMonth(),positiveItem.getDay());
             Date date = dateCalendar.getTime();
-            initList.add(new DoingListItem(positiveItem.getItemname(),positiveItem.getItemmoney(),positiveItem.getImagenum(),date));
+            initList.add(new DoingListItem(positiveItem.getItemname(),positiveItem.getItemmoney()*(-1),positiveItem.getImagenum(),date));
         }
         List<AccountBean> negativeList = DBManager.getNegativetbByDay(year,month,day);
         for (int i=0;i<negativeList.size();i++) {
             AccountBean negativeItem = negativeList.get(i);
             Calendar dateCalendar = new GregorianCalendar(negativeItem.getYear(),negativeItem.getMonth(),negativeItem.getDay());
             Date date = dateCalendar.getTime();
-            initList.add(new DoingListItem(negativeItem.getItemname(),negativeItem.getItemmoney()*(-1),negativeItem.getImagenum(),date));
+            initList.add(new DoingListItem(negativeItem.getItemname(),negativeItem.getItemmoney(),negativeItem.getImagenum(),date));
         }
         listAdapter = new DoingListAdapter(initList,MainActivity.this);
         doing_list.setAdapter(listAdapter);

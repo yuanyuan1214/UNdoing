@@ -117,7 +117,7 @@ public class BillActivity extends AppCompatActivity {
                 AccountBean positiveItem = positiveList.get(i);
                 Calendar dateCalendar = new GregorianCalendar(positiveItem.getYear(),positiveItem.getMonth(),positiveItem.getDay());
                 Date date = dateCalendar.getTime();
-                doingList.add(new DoingListItem(positiveItem.getItemname(),positiveItem.getItemmoney(),positiveItem.getImagenum(),date));
+                doingList.add(new DoingListItem(positiveItem.getItemname(),positiveItem.getItemmoney()*(-1),positiveItem.getImagenum(),date));
             }
             doingListAdapter = new DoingListAdapter(doingList,BillActivity.this);
             Bill_list.setAdapter(doingListAdapter);
@@ -129,7 +129,7 @@ public class BillActivity extends AppCompatActivity {
                 AccountBean negativeItem = negativeList.get(i);
                 Calendar dateCalendar = new GregorianCalendar(negativeItem.getYear(),negativeItem.getMonth(),negativeItem.getDay());
                 Date date = dateCalendar.getTime();
-                undoList.add(new DoingListItem(negativeItem.getItemname(),negativeItem.getItemmoney()*(-1),negativeItem.getImagenum(),date));
+                undoList.add(new DoingListItem(negativeItem.getItemname(),negativeItem.getItemmoney(),negativeItem.getImagenum(),date));
             }
             undoListAdapter = new DoingListAdapter(undoList,BillActivity.this);
             Bill_list.setAdapter(undoListAdapter);

@@ -97,9 +97,13 @@ public class DoingListAdapter extends BaseAdapter {
         outImg.setBackgroundColor(context.getResources().getColor(itemData.get(position).getImg_background()));
         img.setBackgroundResource(itemData.get(position).getDoing_image());
         content.setText(itemData.get(position).getDoing_content());
-        cost.setText(String.format("%.2f",itemData.get(position).getDoing_cost()));
+        double costValue=itemData.get(position).getDoing_cost();
+        if (costValue>0)
+            cost.setText("+"+String.format("%.2f",costValue));
+        else
+            cost.setText(String.format("%.2f",costValue));
 
-        if (itemData.get(position).getDoing_cost()<0) {
+        if (itemData.get(position).getDoing_cost()>0) {
             cost.setTextAppearance(R.style.itemSaveStyle);
         }
         //设置间隔背景
