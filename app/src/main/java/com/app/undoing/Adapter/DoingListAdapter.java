@@ -64,8 +64,16 @@ public class DoingListAdapter extends BaseAdapter {
 
         //判断是billActivity内的
         if (parent.getId()==R.id.bill_list) {
+            System.out.println("位置"+position);
             //设置日期部分
-            if ((position == 0)||(itemData.get(position).getDoing_date()!=itemData.get(position-1).getDoing_date())) {
+            if (position != 0) {
+                System.out.println(position);
+                System.out.println("当前的"+itemData.get(position).getDoing_date());
+                System.out.println("前一个"+itemData.get(position-1).getDoing_date());
+                System.out.println(!itemData.get(position).getDoing_date().equals(itemData.get(position-1).getDoing_date()));
+            }
+            if ((position == 0)||(!itemData.get(position).getDoing_date().equals(itemData.get(position-1).getDoing_date()))) {
+                System.out.println("test"+position);
                 LinearLayout out_doing_list_item=(LinearLayout)convertView.findViewById(R.id.out_doing_list_item);
                 SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日-EEEE");
                 String dateOutput = sdf.format(itemData.get(position).getDoing_date());
@@ -90,6 +98,10 @@ public class DoingListAdapter extends BaseAdapter {
         img.setBackgroundResource(itemData.get(position).getDoing_image());
         content.setText(itemData.get(position).getDoing_content());
         cost.setText(String.format("%.2f",itemData.get(position).getDoing_cost()));
+
+        if (itemData.get(position).getDoing_cost()<0) {
+            cost.setTextAppearance(R.style.itemSaveStyle);
+        }
         //设置间隔背景
         LinearLayout outCost= (LinearLayout) convertView.findViewById(R.id.out_item_cost);
         LinearLayout outContent= (LinearLayout) convertView.findViewById(R.id.out_item_content);

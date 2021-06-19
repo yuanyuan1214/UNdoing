@@ -8,20 +8,24 @@ import java.util.List;
 public class RecommendListItem {
     private String recommend_content;
     private String recommend_detail;
-    private double recommend_save;
+    private float recommend_save;
     private int recommend_image;
     private List<Integer> recommend_save_count;
     private int img_background;
     private Date recommend_date;
+    private int id;
+    private int week;
 
 
-    public RecommendListItem(String content,String detail, double save,int image,List<Integer> save_count,Date recommend_date){
+    public RecommendListItem(String content,String detail, float save,int image,List<Integer> save_count,Date recommend_date,int week,int id){
         this.recommend_content=content;
         this.recommend_detail=detail;
         this.recommend_save=save;
         this.recommend_image=image;
         this.recommend_save_count=save_count;
         this.recommend_date=recommend_date;
+        this.week=week;
+        this.id=id;
         int color_select=(int)(1+Math.random()*8);
         switch (color_select){
             case 1:
@@ -68,11 +72,11 @@ public class RecommendListItem {
         this.recommend_detail = recommend_detail;
     }
 
-    public double getRecommend_save() {
+    public float getRecommend_save() {
         return recommend_save;
     }
 
-    public void setRecommend_save(double recommend_save) {
+    public void setRecommend_save(float recommend_save) {
         this.recommend_save = recommend_save;
     }
 
@@ -105,5 +109,21 @@ public class RecommendListItem {
 
     public void setRecommend_date(Date recommend_date) {
         this.recommend_date = recommend_date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getWeek() {
+        return week;
+    }
+
+    public void setWeek(int week) {
+        this.week = week;
     }
 }

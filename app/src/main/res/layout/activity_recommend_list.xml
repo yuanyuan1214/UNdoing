@@ -24,13 +24,13 @@
                 android:id="@+id/topbar">
 
                 <ImageButton
-                    android:layout_width="@dimen/dp_66"
-                    android:layout_height="@dimen/dp_44"
-                    android:background="@drawable/topbutton_back"
-                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_width="@dimen/dp_74"
+                    android:layout_height="@dimen/dp_74"
+                    android:background="@drawable/back"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="@dimen/dp_5"
-                    android:id="@+id/back"/>
+                    android:id="@+id/backmenu"/>
                 <ImageView
                     android:layout_width="@dimen/dp_260"
                     android:layout_height="@dimen/dp_61"

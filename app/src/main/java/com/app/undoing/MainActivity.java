@@ -20,7 +20,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
+
+import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.DBManager;
 import com.app.undoing.R;
 import java.util.List;
 
@@ -55,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        int week=calendar.get(Calendar.WEEK_OF_MONTH);
+        List<Float> weekMoney=DBManager.getWeekMoney(year,month,week);
+        List<Integer> weekPoints=DBManager.getWeekPoints(year,month,week);
+        TextView positive=(TextView) findViewById(R.id.positive);
+        TextView negative=(TextView) findViewById(R.id.negative);
+        TextView positiveP=(TextView)findViewById(R.id.positive_points);
+        TextView negativeP=(TextView)findViewById(R.id.negative_points);
+        positive.setText(String.format("%.1f",weekMoney.get(0)));
+        negative.setText(String.format("%.1f",weekMoney.get(1)));
+        positiveP.setText(weekPoints.get(0).toString());
+        negativeP.setText(weekPoints.get(1).toString());
+
         //设置页面跳转
         ImageButton btn = (ImageButton) findViewById(R.id.bt1);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -85,20 +101,25 @@ public class MainActivity extends AppCompatActivity {
     private void setDoingList() throws ParseException {
         doing_list = (ListView) findViewById(R.id.doingList);
         initList =new LinkedList<DoingListItem>();
-        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        Date date=dateFormat.parse("2021-06-17");
-        initList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit, date));
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        List<AccountBean> positiveList = DBManager.getPositivetbByDay(year,month,day);
+        for (int i=0;i<positiveList.size();i++) {
+            AccountBean positiveItem = positiveList.get(i);
+            Calendar dateCalendar = new GregorianCalendar(positiveItem.getYear(),positiveItem.getMonth(),positiveItem.getDay());
+            Date date = dateCalendar.getTime();
+            initList.add(new DoingListItem(positiveItem.getItemname(),positiveItem.getItemmoney(),positiveItem.getImagenum(),date));
+        }
+        List<AccountBean> negativeList = DBManager.getNegativetbByDay(year,month,day);
+        for (int i=0;i<negativeList.size();i++) {
+            AccountBean negativeItem = negativeList.get(i);
+            Calendar dateCalendar = new GregorianCalendar(negativeItem.getYear(),negativeItem.getMonth(),negativeItem.getDay());
+            Date date = dateCalendar.getTime();
+            initList.add(new DoingListItem(negativeItem.getItemname(),negativeItem.getItemmoney()*(-1),negativeItem.getImagenum(),date));
+        }
         listAdapter = new DoingListAdapter(initList,MainActivity.this);
         doing_list.setAdapter(listAdapter);
-        listAdapter.addItemData(new DoingListItem("五角场看电影",-48.00,R.drawable.dashicons_editor_video, date));
-        listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food, date));
-        listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart, date));
-        listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane,date));
-        listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets,date));
-        date=dateFormat.parse("2021-06-18");
-        listAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food,date));
-        listAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart,date));
-        listAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane,date));
-        listAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets,date));
     }
 }

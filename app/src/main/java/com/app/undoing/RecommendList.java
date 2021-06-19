@@ -2,13 +2,18 @@ package com.app.undoing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.app.undoing.Adapter.DoingListAdapter;
 import com.app.undoing.Adapter.RecommendListAdapter;
 import com.app.undoing.Content.DoingListItem;
 import com.app.undoing.Content.RecommendListItem;
+import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.DBManager;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.text.DateFormat;
@@ -18,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 public class RecommendList extends AppCompatActivity {
@@ -36,6 +42,17 @@ public class RecommendList extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        //添加顶部按钮事件
+        ImageButton btnBack = (ImageButton) findViewById(R.id.backmenu);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(RecommendList.this , MainActivity.class);
+                startActivity(i);
+            }
+        });
+
         materialButtonToggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
@@ -58,16 +75,23 @@ public class RecommendList extends AppCompatActivity {
     private RecommendListAdapter recommendListAdapter;
     private void setRecommendList() throws ParseException {
         recommend_list=(ListView)findViewById(R.id.recommend_list);
-        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        Date date=dateFormat.parse("2021-06-18");
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         recommendList =new LinkedList<RecommendListItem>();
-        recommendList.add(new RecommendListItem("衣物","UT联名T恤",130,R.drawable.dashicons_cart,new ArrayList<Integer>(Arrays.asList(2,1,2,2,2)),date));
+        List<AccountBean> greedList = DBManager.getGreedtbByDay(year,month,day);
+        for (int i=0;i<greedList.size();i++) {
+            AccountBean greedItem = greedList.get(i);
+            System.out.println("这是greedItem.getId()"+greedItem.getId());
+            Calendar dateCalendar = new GregorianCalendar(greedItem.getYear(),greedItem.getMonth(),greedItem.getDay());
+            Date date = dateCalendar.getTime();
+            recommendList.add(new RecommendListItem(greedItem.getTypename(),greedItem.getItemname(),greedItem.getItemmoney(),greedItem.getImagenum(),
+                    new ArrayList<Integer>(
+                            Arrays.asList(greedItem.getWater(),greedItem.getLand(),greedItem.getAir(),greedItem.getMineral(),greedItem.getAnimal())
+                    ),date,greedItem.getWeek(),greedItem.getId()));
+        }
         recommendListAdapter= new RecommendListAdapter(recommendList,RecommendList.this);
         recommend_list.setAdapter(recommendListAdapter);
-        recommendListAdapter.addItemData(new RecommendListItem("美妆","KATE彩妆盒",200,R.drawable.dashicons_editor_video, new ArrayList<>(Arrays.asList(1, 1, 2, 2, 2)),date));
-        recommendListAdapter.addItemData(new RecommendListItem("数码","无线蓝牙耳机",230,R.drawable.dashicons_computer, new ArrayList<>(Arrays.asList(1, 1, 1, 2, 0)),date));
-        date=dateFormat.parse("2021-06-19");
-        recommendListAdapter.addItemData(new RecommendListItem("美妆","KATE彩妆盒",200,R.drawable.dashicons_editor_video, new ArrayList<>(Arrays.asList(1, 1, 2, 2, 2)),date));
-        recommendListAdapter.addItemData(new RecommendListItem("数码","无线蓝牙耳机",230,R.drawable.dashicons_computer, new ArrayList<>(Arrays.asList(1, 1, 1, 2, 0)),date));
     }
 }

@@ -199,6 +199,7 @@
                         android:text="节约"/>
 
                     <TextView
+                        android:id="@+id/negative"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -221,6 +222,7 @@
                         android:text="支出"/>
 
                     <TextView
+                        android:id="@+id/positive"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -252,6 +254,7 @@
                         android:text="积累" />
 
                     <TextView
+                        android:id="@+id/negative_points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -274,6 +277,7 @@
                         android:text="消耗" />
 
                     <TextView
+                        android:id="@+id/positive_points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -300,8 +304,7 @@
     android:layout_below="@id/total"
     android:layout_above="@id/addList"
     android:id="@+id/doingList">
-
-</ListView>
+    </ListView>
 
 
 <LinearLayout

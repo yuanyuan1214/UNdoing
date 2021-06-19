@@ -6,12 +6,12 @@ import java.util.Date;
 
 public class DoingListItem {
     private String doing_content;
-    private double doing_cost;
+    private float doing_cost;
     private int doing_image;
     private int img_background;
     private Date doing_date;
 
-    public DoingListItem(String content,double cost,int image,Date doing_date){
+    public DoingListItem(String content,float cost,int image,Date doing_date){
         this.doing_content=content;
         this.doing_cost=cost;
         this.doing_image=image;
@@ -59,7 +59,7 @@ public class DoingListItem {
         return this.doing_cost;
     }
 
-    public void setDoing_cost(double cost){
+    public void setDoing_cost(float cost){
         this.doing_cost=cost;
     }
 

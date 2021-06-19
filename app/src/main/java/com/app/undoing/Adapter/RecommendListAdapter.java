@@ -16,11 +16,15 @@ import androidx.annotation.RequiresApi;
 
 import com.app.undoing.Content.DoingListItem;
 import com.app.undoing.Content.RecommendListItem;
+import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.DBManager;
 import com.app.undoing.MainActivity;
 import com.app.undoing.R;
 import com.app.undoing.RecommendList;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,7 +64,7 @@ public class RecommendListAdapter extends BaseAdapter {
         //判断是recommend内的
         if (parent.getId()==R.id.recommend_list) {
             //设置日期部分
-            if ((position == 0)||(itemData.get(position).getRecommend_date()!=itemData.get(position-1).getRecommend_date())) {
+            if ((position == 0)||(!itemData.get(position).getRecommend_date().equals(itemData.get(position-1).getRecommend_date()))) {
                 LinearLayout out_recommend_list_item=(LinearLayout)convertView.findViewById(R.id.out_recommend_list_item);
                 SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日-EEEE");
                 String dateOutput = sdf.format(itemData.get(position).getRecommend_date());
@@ -90,14 +94,49 @@ public class RecommendListAdapter extends BaseAdapter {
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RecommendListItem recommendListItem=(RecommendListItem)getItem(position);
+                DBManager.deleteItemFromGreedtbById(recommendListItem.getId());
+                System.out.println("获取id"+recommendListItem.getId());
                 itemData.remove(getItem(position));
+                Date date=recommendListItem.getRecommend_date();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+                int year=calendar.get(Calendar.YEAR);					//获取年份
+                int month=calendar.get(Calendar.MONTH);					//获取月份
+                int day=calendar.get(Calendar.DATE);
+                DBManager.insertItemToPositivetb(new AccountBean(0,recommendListItem.getRecommend_content(),
+                        recommendListItem.getRecommend_detail(),recommendListItem.getRecommend_save(),recommendListItem.getRecommend_image(),
+                        year,month,day,recommendListItem.getWeek(),
+                        recommendListItem.getRecommend_save_count().get(0),
+                        recommendListItem.getRecommend_save_count().get(1),
+                        recommendListItem.getRecommend_save_count().get(2),
+                        recommendListItem.getRecommend_save_count().get(3),
+                        recommendListItem.getRecommend_save_count().get(4)
+                        ));
                 notifyDataSetChanged();
             }
         });
         minus_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                itemData.remove(getItem((position)));
+                RecommendListItem recommendListItem=(RecommendListItem)getItem(position);
+                DBManager.deleteItemFromGreedtbById(recommendListItem.getId());
+                itemData.remove(getItem(position));
+                Date date=recommendListItem.getRecommend_date();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+                int year=calendar.get(Calendar.YEAR);					//获取年份
+                int month=calendar.get(Calendar.MONTH);					//获取月份
+                int day=calendar.get(Calendar.DATE);
+                DBManager.insertItemToNegativetb(new AccountBean(0,recommendListItem.getRecommend_content(),
+                        recommendListItem.getRecommend_detail(),recommendListItem.getRecommend_save(),recommendListItem.getRecommend_image(),
+                        year,month,day,recommendListItem.getWeek(),
+                        recommendListItem.getRecommend_save_count().get(0),
+                        recommendListItem.getRecommend_save_count().get(1),
+                        recommendListItem.getRecommend_save_count().get(2),
+                        recommendListItem.getRecommend_save_count().get(3),
+                        recommendListItem.getRecommend_save_count().get(4)
+                ));
                 notifyDataSetChanged();
             }
         });

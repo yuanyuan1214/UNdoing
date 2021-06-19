@@ -50,6 +50,8 @@ public class BookKeep extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_keep);
         selectedItem=0;
+        typeImage = new HashMap<>();
+        typename = "服饰";
         typeImage.put("服饰",R.drawable.dashicons_cloth);
         typeImage.put("饮食",R.drawable.dashicons_food);
         typeImage.put("文具",R.drawable.dashicons_pets);   //缺失
@@ -113,7 +115,7 @@ public class BookKeep extends AppCompatActivity {
                     int day=c.get(Calendar.DAY_OF_MONTH);
                     int week=c.get(Calendar.WEEK_OF_MONTH);
                     int imagenum=typeImage.get(typename);
-                    AccountBean bean=new AccountBean(0,typename,itemname,imagenum,itemmoney,year,month,day,week,1,0,1,1,0);
+                    AccountBean bean=new AccountBean(0,typename,itemname,itemmoney,imagenum,year,month,day,week,1,0,1,1,0);
                     if(selectedItem==0)
                     {
                         DBManager.insertItemToPositivetb(bean);

@@ -17,6 +17,7 @@ public class AccountBean {
     int mineral;
     int animal;
 
+
     public float getItemmoney() {
         return itemmoney;
     }
@@ -110,7 +111,7 @@ public class AccountBean {
 
     public AccountBean(){}
 
-    public AccountBean(int id,String typename,String itemname,int imagenum,float itemmoney,int year,int month,int day,int week,int water,int land,int air,int mineral,int animal)
+    public AccountBean(int id,String typename,String itemname,float itemmoney,int imagenum,int year,int month,int day,int week,int water,int land,int air,int mineral,int animal)
     {
         this.id=id;
         this.typename=typename;

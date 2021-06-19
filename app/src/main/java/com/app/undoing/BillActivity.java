@@ -1,37 +1,31 @@
 package com.app.undoing;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.app.undoing.Adapter.DoingListAdapter;
-import com.app.undoing.Adapter.UndoListAdapter;
 import com.app.undoing.Content.DoingListItem;
-import com.app.undoing.Content.UnDoListItem;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
+import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.DBManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,8 +39,8 @@ public class BillActivity extends AppCompatActivity {
     //好像是用于处理ListView的动态添加的
     private DoingListAdapter doingListAdapter;
     //反向账单
-    public LinkedList<UnDoListItem> undoList;
-    private UndoListAdapter undoListAdapter;
+    public LinkedList<DoingListItem> undoList;
+    private DoingListAdapter undoListAdapter;
     private ListView Bill_list;
 
     @Override
@@ -56,6 +50,16 @@ public class BillActivity extends AppCompatActivity {
         selectedItem=0;
         //设置下拉选择框样式
         setSpinnerStyle();
+
+        //添加顶部按钮事件
+        ImageButton btnBack = (ImageButton) findViewById(R.id.backmenu);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(BillActivity.this , MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     //设置下拉选择框
@@ -85,6 +89,7 @@ public class BillActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedItem=position;
+                System.out.println("选择项"+selectedItem);
                 //设置列表
                 try {
                     setDoingList();
@@ -101,40 +106,33 @@ public class BillActivity extends AppCompatActivity {
 
     private void setDoingList() throws ParseException {
         Bill_list = (ListView) findViewById(R.id.bill_list);
-        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        Date date=dateFormat.parse("2021-06-17");
-        System.out.println("选择项"+selectedItem);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         if (selectedItem == 0) {
             doingList =new LinkedList<DoingListItem>();
-            doingList.add(new DoingListItem("买水果",-21.00,R.drawable.dashicons_fruit, date));
+            List<AccountBean> positiveList = DBManager.getPositivetbByDay(year,month,day);
+            for (int i=0;i<positiveList.size();i++) {
+                AccountBean positiveItem = positiveList.get(i);
+                Calendar dateCalendar = new GregorianCalendar(positiveItem.getYear(),positiveItem.getMonth(),positiveItem.getDay());
+                Date date = dateCalendar.getTime();
+                doingList.add(new DoingListItem(positiveItem.getItemname(),positiveItem.getItemmoney(),positiveItem.getImagenum(),date));
+            }
             doingListAdapter = new DoingListAdapter(doingList,BillActivity.this);
-            doingListAdapter.addItemData(new DoingListItem("五角场看电影",-48.00,R.drawable.dashicons_editor_video, date));
-            doingListAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food, date));
-            doingListAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart, date));
-            doingListAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane,date));
-            doingListAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets,date));
             Bill_list.setAdapter(doingListAdapter);
-            date=dateFormat.parse("2021-06-18");
-            doingListAdapter.addItemData(new DoingListItem("请同学吃饭",-121.00,R.drawable.dashicons_food,date));
-            doingListAdapter.addItemData(new DoingListItem("网购洗发水",-78.00,R.drawable.dashicons_cart,date));
-            doingListAdapter.addItemData(new DoingListItem("预订回家机票",-830.00,R.drawable.dashicons_plane,date));
-            doingListAdapter.addItemData(new DoingListItem("买狗粮",-120.00,R.drawable.dashicons_pets,date));
         }
         else {
-            undoList =new LinkedList<UnDoListItem>();
-            undoList.add(new UnDoListItem("买水果",21.00,R.drawable.dashicons_fruit, date));
-            undoListAdapter = new UndoListAdapter(undoList,BillActivity.this);
-            undoListAdapter.addItemData(new UnDoListItem("五角场看电影",48.00,R.drawable.dashicons_editor_video, date));
-            undoListAdapter.addItemData(new UnDoListItem("请同学吃饭",121.00,R.drawable.dashicons_food, date));
-            undoListAdapter.addItemData(new UnDoListItem("网购洗发水",78.00,R.drawable.dashicons_cart, date));
-            undoListAdapter.addItemData(new UnDoListItem("预订回家机票",830.00,R.drawable.dashicons_plane,date));
-            undoListAdapter.addItemData(new UnDoListItem("买狗粮",120.00,R.drawable.dashicons_pets,date));
+            undoList =new LinkedList<DoingListItem>();
+            List<AccountBean> negativeList = DBManager.getNegativetbByDay(year,month,day);
+            for (int i=0;i<negativeList.size();i++) {
+                AccountBean negativeItem = negativeList.get(i);
+                Calendar dateCalendar = new GregorianCalendar(negativeItem.getYear(),negativeItem.getMonth(),negativeItem.getDay());
+                Date date = dateCalendar.getTime();
+                undoList.add(new DoingListItem(negativeItem.getItemname(),negativeItem.getItemmoney()*(-1),negativeItem.getImagenum(),date));
+            }
+            undoListAdapter = new DoingListAdapter(undoList,BillActivity.this);
             Bill_list.setAdapter(undoListAdapter);
-            date=dateFormat.parse("2021-06-19");
-            undoListAdapter.addItemData(new UnDoListItem("请同学吃饭",121.00,R.drawable.dashicons_food,date));
-            undoListAdapter.addItemData(new UnDoListItem("网购洗发水",78.00,R.drawable.dashicons_cart,date));
-            undoListAdapter.addItemData(new UnDoListItem("预订回家机票",830.00,R.drawable.dashicons_plane,date));
-            undoListAdapter.addItemData(new UnDoListItem("买狗粮",120.00,R.drawable.dashicons_pets,date));
         }
     }
 }
