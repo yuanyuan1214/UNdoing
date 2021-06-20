@@ -24,6 +24,7 @@ import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.CalenderForOne;
 import com.app.undoing.Database.DBManager;
 import com.app.undoing.R;
 import java.util.List;
@@ -39,12 +40,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH)+1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        calendar.setFirstDayOfWeek(Calendar.MONDAY);
-        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+//        Calendar calendar = Calendar.getInstance();
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH)+1;
+//        int day = calendar.get(Calendar.DAY_OF_MONTH);
+//        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+//        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+
+        int year= CalenderForOne.getYear();
+        int month=CalenderForOne.getMonth();
+        int day=CalenderForOne.getDay();
+        int weekOfYear=CalenderForOne.getWeekOfYear();
         TextView yy=(TextView) findViewById(R.id.year);
         yy.setText(Integer.toString(year));
         TextView mm=(TextView) findViewById(R.id.month);
@@ -59,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        int week=calendar.get(Calendar.WEEK_OF_MONTH);
+        int week=CalenderForOne.getWeekOfMonth();
+        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"+week);
         List<Float> weekMoney=DBManager.getWeekMoney(year,month,week);
         List<Integer> weekPoints=DBManager.getWeekPoints(year,month,week);
         TextView positive=(TextView) findViewById(R.id.positive);
@@ -101,10 +108,13 @@ public class MainActivity extends AppCompatActivity {
     private void setDoingList() throws ParseException {
         doing_list = (ListView) findViewById(R.id.doingList);
         initList =new LinkedList<DoingListItem>();
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH)+1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+//        Calendar calendar = Calendar.getInstance();
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH)+1;
+//        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int year= CalenderForOne.getYear();
+        int month=CalenderForOne.getMonth();
+        int day=CalenderForOne.getDay();
         List<AccountBean> positiveList = DBManager.getPositivetbByDay(year,month,day);
         for (int i=0;i<positiveList.size();i++) {
             AccountBean positiveItem = positiveList.get(i);

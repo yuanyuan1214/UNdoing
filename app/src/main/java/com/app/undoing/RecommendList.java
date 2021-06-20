@@ -13,6 +13,7 @@ import com.app.undoing.Adapter.RecommendListAdapter;
 import com.app.undoing.Content.DoingListItem;
 import com.app.undoing.Content.RecommendListItem;
 import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.CalenderForOne;
 import com.app.undoing.Database.DBManager;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
@@ -32,10 +33,6 @@ public class RecommendList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommend_list);
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH)+1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
         MaterialButtonToggleGroup materialButtonToggleGroup = findViewById(R.id.toggleGroup);
         try {
             setRecommendList();
@@ -75,10 +72,13 @@ public class RecommendList extends AppCompatActivity {
     private RecommendListAdapter recommendListAdapter;
     private void setRecommendList() throws ParseException {
         recommend_list=(ListView)findViewById(R.id.recommend_list);
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH)+1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+//        Calendar calendar = Calendar.getInstance();
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH)+1;
+//        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int year= CalenderForOne.getYear();
+        int month=CalenderForOne.getMonth();
+        int day=CalenderForOne.getDay();
         recommendList =new LinkedList<RecommendListItem>();
         List<AccountBean> greedList = DBManager.getGreedtbByDay(year,month,day);
         for (int i=0;i<greedList.size();i++) {

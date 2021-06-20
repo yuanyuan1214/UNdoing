@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.app.undoing.Adapter.TypeBaseAdapter;
 import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.CalenderForOne;
 import com.app.undoing.Database.DBManager;
 import com.app.undoing.Database.TypeBean;
 
@@ -109,11 +110,18 @@ public class BookKeep extends AppCompatActivity {
                 else
                 {
                     itemmoney=Float.parseFloat(money);
-                    Calendar c=Calendar.getInstance();
-                    int year=c.get(Calendar.YEAR);
-                    int month=c.get(Calendar.MONTH)+1;
-                    int day=c.get(Calendar.DAY_OF_MONTH);
-                    int week=c.get(Calendar.WEEK_OF_MONTH);
+                    //WEEK和MainActivity不一致是超级大坑！！！
+//                    Calendar c=Calendar.getInstance();
+//                    int year=c.get(Calendar.YEAR);
+//                    int month=c.get(Calendar.MONTH)+1;
+//                    int day=c.get(Calendar.DAY_OF_MONTH);
+//                    int week=c.get(Calendar.WEEK_OF_MONTH);
+//                    int imagenum=typeImage.get(typename);
+
+                    int year= CalenderForOne.getYear();
+                    int month=CalenderForOne.getMonth();
+                    int day=CalenderForOne.getDay();
+                    int week=CalenderForOne.getWeekOfMonth();
                     int imagenum=typeImage.get(typename);
                     AccountBean bean=new AccountBean(0,typename,itemname,itemmoney,imagenum,year,month,day,week,1,0,1,1,0);
                     if(selectedItem==0)

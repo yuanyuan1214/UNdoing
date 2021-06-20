@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.app.undoing.Adapter.DoingListAdapter;
 import com.app.undoing.Content.DoingListItem;
 import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.CalenderForOne;
 import com.app.undoing.Database.DBManager;
 
 import androidx.annotation.NonNull;
@@ -106,10 +107,13 @@ public class BillActivity extends AppCompatActivity {
 
     private void setDoingList() throws ParseException {
         Bill_list = (ListView) findViewById(R.id.bill_list);
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH)+1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+//        Calendar calendar = Calendar.getInstance();
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH)+1;
+//        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int year= CalenderForOne.getYear();
+        int month=CalenderForOne.getMonth();
+        int day=CalenderForOne.getDay();
         if (selectedItem == 0) {
             doingList =new LinkedList<DoingListItem>();
             List<AccountBean> positiveList = DBManager.getPositivetbByDay(year,month,day);

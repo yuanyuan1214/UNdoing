@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import com.app.undoing.Content.DoingListItem;
 import com.app.undoing.Content.RecommendListItem;
 import com.app.undoing.Database.AccountBean;
+import com.app.undoing.Database.CalenderForOne;
 import com.app.undoing.Database.DBManager;
 import com.app.undoing.MainActivity;
 import com.app.undoing.R;
@@ -99,11 +100,15 @@ public class RecommendListAdapter extends BaseAdapter {
                 System.out.println("获取id"+recommendListItem.getId());
                 itemData.remove(getItem(position));
                 Date date=recommendListItem.getRecommend_date();
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
-                int year=calendar.get(Calendar.YEAR);					//获取年份
-                int month=calendar.get(Calendar.MONTH);					//获取月份
-                int day=calendar.get(Calendar.DATE);
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.setTime(date);
+//                int year=calendar.get(Calendar.YEAR);					//获取年份
+//                int month=calendar.get(Calendar.MONTH);					//获取月份
+//                int day=calendar.get(Calendar.DATE);
+                int year= CalenderForOne.getYear();
+                int month=CalenderForOne.getMonth();
+                int day=CalenderForOne.getDay();
+                int week=CalenderForOne.getWeekOfMonth();
                 DBManager.insertItemToPositivetb(new AccountBean(0,recommendListItem.getRecommend_content(),
                         recommendListItem.getRecommend_detail(),recommendListItem.getRecommend_save(),recommendListItem.getRecommend_image(),
                         year,month,day,recommendListItem.getWeek(),
