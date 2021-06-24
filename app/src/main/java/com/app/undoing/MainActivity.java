@@ -29,7 +29,9 @@ import com.app.undoing.Database.DBManager;
 import com.app.undoing.R;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import com.baidu.aip.asrwakeup3.core.mini.ActivityMiniRecog;
+
+public class MainActivity extends ActivityMiniRecog {
 
     private LinkedList<DoingListItem> initList;
     //好像是用于处理ListView的动态添加的
