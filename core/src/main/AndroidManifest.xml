@@ -9,16 +9,27 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application>
+<!--        <meta-data-->
+<!--            android:name="com.baidu.speech.APP_ID"-->
+<!--            android:value="15590577"/>-->
+
+<!--        <meta-data-->
+<!--                android:name="com.baidu.speech.API_KEY"-->
+<!--                android:value="q2uPyBe6LmWTZlvb0g1dzcHV"/>-->
+<!--        <meta-data-->
+<!--                android:name="com.baidu.speech.SECRET_KEY"-->
+<!--                android:value="y7S7hAI894BB3LF1yHYmvQEus1B6wPvj"/>-->
         <meta-data
             android:name="com.baidu.speech.APP_ID"
-            android:value="15590577"/>
+            android:value="24150135"/>
 
         <meta-data
-                android:name="com.baidu.speech.API_KEY"
-                android:value="q2uPyBe6LmWTZlvb0g1dzcHV"/>
+            android:name="com.baidu.speech.API_KEY"
+            android:value="asCfwkWBB9DH2GUEFb1v51w0"/>
         <meta-data
-                android:name="com.baidu.speech.SECRET_KEY"
-                android:value="y7S7hAI894BB3LF1yHYmvQEus1B6wPvj"/>
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="bSzU3WQxn7p1mDKBtRq8Fp7d93902cjG"/>
     </application>
 </manifest>

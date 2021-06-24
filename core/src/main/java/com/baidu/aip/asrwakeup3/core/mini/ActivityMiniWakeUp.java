@@ -107,6 +107,7 @@ public class ActivityMiniWakeUp extends AppCompatActivity implements EventListen
         String logTxt = "name: " + name;
         if (params != null && !params.isEmpty()) {
             logTxt += " ;params :" + params;
+
         } else if (data != null) {
             logTxt += " ;data length=" + data.length;
         }

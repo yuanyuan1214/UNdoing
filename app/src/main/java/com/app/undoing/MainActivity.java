@@ -3,6 +3,9 @@ package com.app.undoing;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +21,7 @@ import android.widget.TextView;
 import com.app.undoing.Adapter.DoingListAdapter;
 import com.app.undoing.Content.DoingListItem;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,6 +48,7 @@ import com.baidu.speech.EventManager;
 import com.baidu.speech.EventManagerFactory;
 import com.baidu.speech.asr.SpeechConstant;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements EventListener {
@@ -52,7 +57,13 @@ public class MainActivity extends AppCompatActivity implements EventListener {
     //好像是用于处理ListView的动态添加的
     private DoingListAdapter listAdapter;
     private ListView doing_list;
+
+    //语音识别变量
     private EventManager asr;
+    private int State;
+    private AccountBean inputData = new AccountBean();
+    private int operationType; //1表示记账，2表示种草
+    private int runTime;//循环次数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,11 +134,40 @@ public class MainActivity extends AppCompatActivity implements EventListener {
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this , BookKeep.class);
-//                startActivity(i);
-                start();
+                Intent i = new Intent(MainActivity.this , BookKeep.class);
+                startActivity(i);
             }
         });
+        btnBook.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                State=0;
+                runTime=0;
+                playMedia("welcome.mp3");
+                return true;
+            }
+        });
+    }
+
+    private void playMedia(String fileName) {
+        AssetManager assetManager;
+        MediaPlayer player = null;
+        player = new MediaPlayer();
+        assetManager = getResources().getAssets();
+        try {
+            AssetFileDescriptor fileDescriptor = assetManager.openFd(fileName);
+            player.setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(), fileDescriptor.getLength());
+            player.prepare();
+            player.start();
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    start();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void start() {
@@ -189,6 +229,40 @@ public class MainActivity extends AppCompatActivity implements EventListener {
     public void onEvent(String name, String params, byte[] data, int offset, int length) {
         String logTxt = "name: " + name;
 
+        if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_FINISH)) {
+            System.out.println("分支选择前"+State);
+            switch (State) {
+                case 0:
+                    if (runTime<3) {
+                        playMedia("welcome.mp3");
+                        runTime++;
+                    }
+                    break;
+                case 1://分类
+                    if (runTime<3) {
+                        playMedia("objectType.mp3");
+                        runTime++;
+                    }
+                    break;
+                case 2://金额
+                    if (runTime<3) {
+                        playMedia("Money.mp3");
+                        runTime++;
+                    }
+                    break;
+                case 3://备注
+                    if(runTime<3) {
+                        playMedia("itemName.mp3");
+                        runTime++;
+                    }
+                    break;
+                case 4://播报
+                    break;
+                default:break;
+            }
+            return;
+        }
+
         if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL)) {
             // 识别相关的结果都在这里
             if (params == null || params.isEmpty()) {
@@ -205,6 +279,85 @@ public class MainActivity extends AppCompatActivity implements EventListener {
             }  else if (params.contains("\"final_result\""))  {
                 // 一句话的最终识别结果
                 logTxt += ", 最终识别结果：" + params;
+                asr.send(SpeechConstant.ASR_STOP, null, null, 0, 0);
+                System.out.println("分支选择后"+State);
+                switch (State){
+                    case 0://判断类型
+                        if (params.contains("记账")){
+                            State=1;
+                            runTime=0;
+                            operationType=1;
+                        }
+                        else if (params.contains("种草")) {
+                            State=1;
+                            runTime=0;
+                            operationType=2;
+                        }
+                        break;
+                    case 1://判断物品分类
+                        if (params.contains("交通")) {
+                            State=2;
+                            runTime=0;
+                            inputData.setTypename("交通");
+                            inputData.setImagenum(R.drawable.dashicons_plane);
+                        }
+                        else if (params.contains("文具")) {
+                            State=2;
+                            runTime=0;
+                            inputData.setTypename("文具");
+                            inputData.setImagenum(R.drawable.dashicons_pets);
+                        }
+                        break;
+                    case 2://判断物品价格
+                        if (params.contains("元")) {
+                            State=3;
+                            runTime=0;
+                            try {
+                                JSONObject result = new JSONObject(params);
+                                String str=result.getString("best_result").trim();
+                                String str2="";
+                                if(str != null && !"".equals(str)) {
+                                    for (int i = 0; i < str.length(); i++) {
+                                        if (str.charAt(i) >= 48 && str.charAt(i) <= 57) {
+                                            str2 += str.charAt(i);
+                                        }
+                                    }
+                                }
+                                System.out.println("金额"+str2);
+                                inputData.setItemmoney(Integer.parseInt(str2));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        break;
+                    case 3://判断备注
+                        State=-1;
+                        runTime=0;
+                        try {
+                            JSONObject result = new JSONObject(params);
+                            String str=result.getString("best_result").trim();
+                            inputData.setItemname(str);
+                            int year= CalenderForOne.getYear();
+                            int month=CalenderForOne.getMonth();
+                            int day=CalenderForOne.getDay();
+                            int week=CalenderForOne.getWeekOfMonth();
+                            System.out.println("当前的周数"+week);
+                            inputData.setDate(year,month,day,week);
+                            inputData.setPoints(1,2,1,2,1);
+                            if(operationType==1)
+                            {
+                                DBManager.insertItemToPositivetb(inputData);
+                            }
+                            else
+                            {
+                                DBManager.insertItemToGreedtb(inputData);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
             }  else {
                 // 一般这里不会运行
                 logTxt += " ;params :" + params;
