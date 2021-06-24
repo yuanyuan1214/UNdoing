@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.undoing">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     <application
         android:name=".UniteApp"
         android:allowBackup="true"
@@ -10,6 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UNdoing">
+<!--            <meta-data android:name="com.baidu.speech.APP_ID"-->
+<!--                android:value="24150135" />-->
+<!--            <meta-data-->
+<!--                android:name="com.baidu.speech.API_KEY"-->
+<!--                android:value="asCfwkWBB9DH2GUEFb1v51w0" />-->
+<!--            <meta-data-->
+<!--                android:name="com.baidu.speech.SECRET_KEY"-->
+<!--                android:value="bSzU3WQxn7p1mDKBtRq8Fp7d93902cjG" />-->
         <activity android:name=".BookKeep"  android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
             android:name=".BillActivity"
