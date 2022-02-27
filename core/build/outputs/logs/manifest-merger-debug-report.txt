@@ -1,0 +1,77 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:1:1-35:12
+	package
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:1:70-109
+		INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+		INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:2:5-71
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:2:22-68
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:3:5-79
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:3:22-76
+uses-permission#android.permission.INTERNET
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.BROADCAST_STICKY
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:8:5-75
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:8:22-72
+uses-permission#android.permission.BLUETOOTH
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:9:5-68
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:9:22-65
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:10:22-77
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:11:5-74
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:11:22-71
+application
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:13:5-34:19
+meta-data#com.baidu.speech.APP_ID
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:24:9-26:39
+	android:value
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:26:13-37
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:25:13-51
+meta-data#com.baidu.speech.API_KEY
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:28:9-30:55
+	android:value
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:30:13-53
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:29:13-52
+meta-data#com.baidu.speech.SECRET_KEY
+ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:31:9-33:63
+	android:value
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:33:13-61
+	android:name
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml:32:13-55
+uses-sdk
+INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+		INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+		ADDED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml
+		INJECTED from D:\tools\github\UNdoing\core\src\main\AndroidManifest.xml

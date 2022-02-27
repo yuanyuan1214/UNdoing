@@ -5,5 +5,5 @@
         android:topRightRadius="@dimen/dp_15"
         android:bottomRightRadius="@dimen/dp_15"
         android:bottomLeftRadius="@dimen/dp_15"/>
-    <stroke android:width="@dimen/dp_6" android:color="#76CE9C" />
+    <stroke android:width="@dimen/dp_6" android:color="#CCD7C6" />
 </shape>

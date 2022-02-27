@@ -1,115 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BillActivity">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/detail_dark_green"
         android:orientation="vertical">
-        <LinearLayout
+
+        <View
             android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"/>
+        <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--    正向账单和逆向账单的切换-->
+        <Spinner
+            android:id="@+id/bill_type_change"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bill_top_bar"
-            android:id="@+id/bill_top_bar">
-            <!--    头部-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:orientation="horizontal"
-                android:id="@+id/topbar">
-
-                <ImageButton
-                    android:layout_width="@dimen/dp_74"
-                    android:layout_height="@dimen/dp_74"
-                    android:background="@drawable/back"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:id="@+id/backmenu"/>
-                <ImageView
-                    android:layout_width="@dimen/dp_260"
-                    android:layout_height="@dimen/dp_61"
-                    android:src="@drawable/toplogo2"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/dp_15"/>
-                <ImageButton
-                    android:layout_width="@dimen/dp_98"
-                    android:layout_height="@dimen/dp_98"
-                    android:background="@drawable/topbutton2"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/search"/>
-
-            </RelativeLayout>
-
-            <!--    月、周、日切换-->
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:theme="@style/MaterialStyle"
-                android:id="@+id/toggleGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:singleSelection="true"
-                android:layout_gravity="center"
-                app:checkedButton="@id/btnWeek">
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnMonth"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="@dimen/dp_320"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_color_state_list"
-                    app:strokeColor="@color/white"
-                    android:backgroundTint="@color/background_color_state_list"
-                    android:text="月"/>
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnWeek"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="@dimen/dp_320"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_color_state_list"
-                    app:strokeColor="@color/white"
-                    android:backgroundTint="@color/background_color_state_list"
-                    android:text="周"/>
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDay"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="@dimen/dp_320"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_color_state_list"
-                    app:strokeColor="@color/white"
-                    android:backgroundTint="@color/background_color_state_list"
-                    android:text="日"/>
-
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-
-            <!--    正向账单和逆向账单的切换-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="@dimen/dp_50"
-                android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_20">
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_height="match_parent"
-                    android:id="@+id/bill_type_change"
-                    android:spinnerMode="dropdown"
-                    android:popupBackground="@drawable/radius_border"
-                    ></Spinner>
-            </LinearLayout>
-        </LinearLayout>
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/dp_60"
-            android:id="@+id/bill_list">
-        </ListView>
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_50"
+            android:popupBackground="@drawable/radius_border"
+            android:spinnerMode="dropdown"></Spinner>
     </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bill_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/dp_60"
+        android:layout_marginRight="@dimen/dp_60" />
+</LinearLayout>

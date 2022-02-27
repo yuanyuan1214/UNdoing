@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_100"
+        android:layout_marginRight="@dimen/dp_100"
+        android:background="@drawable/account_introduce_corner"
+        android:backgroundTint="@color/detail_background"
+        android:paddingBottom="@dimen/dp_32">
+
+        <ImageView
+            android:id="@+id/account_type_image"
+            android:layout_width="@dimen/dp_130"
+            android:layout_height="@dimen/dp_130"
+            android:layout_marginLeft="@dimen/dp_59"
+            android:layout_marginTop="@dimen/dp_41"
+            android:tint="@color/detail_font_color"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_study" />
+
+        <TextView
+            android:id="@+id/account_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_33"
+            android:layout_marginTop="@dimen/dp_48"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_48"
+            app:layout_constraintLeft_toRightOf="@id/account_type_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="学习" />
+
+        <ImageView
+            android:id="@+id/account_close"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_40"
+            android:src="@drawable/ic_close"
+            android:tint="@color/detail_font_color"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/account_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_25"
+            android:maxWidth="@dimen/dp_500"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_36"
+            app:layout_constraintLeft_toLeftOf="@id/account_type_text"
+            app:layout_constraintRight_toLeftOf="@id/account_isnew"
+            app:layout_constraintTop_toBottomOf="@id/account_type_text"
+            tools:text="前几天买的笔非常好用" />
+
+        <TextView
+            android:id="@+id/account_isnew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_33"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_36"
+            app:layout_constraintLeft_toRightOf="@id/account_description"
+            app:layout_constraintTop_toTopOf="@id/account_description"
+            tools:text="全新" />
+
+        <TextView
+            android:id="@+id/account_carbon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_83"
+            android:text="碳排放量"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_36"
+            app:layout_constraintLeft_toLeftOf="@id/account_type_image"
+            app:layout_constraintTop_toBottomOf="@id/account_description" />
+
+        <TextView
+            android:id="@+id/account_carbon_t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_68"
+            android:layout_marginTop="@dimen/dp_72"
+            android:text="自身"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_28"
+            app:layout_constraintLeft_toLeftOf="@id/account_carbon"
+            app:layout_constraintTop_toBottomOf="@id/account_carbon" />
+
+        <TextView
+            android:id="@+id/account_carbon_self"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_102"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_54"
+            app:layout_constraintBaseline_toBaselineOf="@id/account_carbon_t1"
+            app:layout_constraintLeft_toRightOf="@id/account_carbon_t1"
+            tools:text="15.1KG"
+            android:fontFamily="@font/post_no_bills_jaffna_medium"/>
+
+        <TextView
+            android:id="@+id/account_carbon_t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_81"
+            android:text="包装"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_28"
+            app:layout_constraintLeft_toLeftOf="@id/account_carbon_t1"
+            app:layout_constraintTop_toBottomOf="@id/account_carbon_t1" />
+
+        <TextView
+            android:id="@+id/account_carbon_wrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_102"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_54"
+            app:layout_constraintBaseline_toBaselineOf="@id/account_carbon_t2"
+            app:layout_constraintLeft_toRightOf="@id/account_carbon_t2"
+            tools:text="20.8KG"
+            android:fontFamily="@font/post_no_bills_jaffna_medium"/>
+
+        <TextView
+            android:id="@+id/account_carbon_t3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_274"
+            android:text="价格"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_36"
+            app:layout_constraintLeft_toLeftOf="@id/account_carbon"
+            app:layout_constraintTop_toBottomOf="@id/account_carbon" />
+
+        <TextView
+            android:id="@+id/account_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_45"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_54"
+            app:layout_constraintBaseline_toBaselineOf="@id/account_carbon_t3"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="3980.00"
+            android:fontFamily="@font/post_no_bills_jaffna_medium"/>
+
+        <TextView
+            android:id="@+id/account_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_45"
+            android:layout_marginRight="@dimen/dp_28"
+            android:background="@color/account_introduce"
+            android:padding="@dimen/dp_28"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_36"
+            app:layout_constraintTop_toBottomOf="@id/account_money"
+            tools:text="l" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/detail_font_color"
+            android:textSize="@dimen/sp_24"
+            android:text="数据来源：碳阻迹（北京）科技有限公司"
+            app:layout_constraintTop_toBottomOf="@id/account_introduce"
+            app:layout_goneMarginTop="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_29"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/dp_41"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

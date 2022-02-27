@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/book_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/out_item_img"
+        android:layout_width="@dimen/dp_160"
+        android:layout_height="@dimen/dp_160"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:layout_gravity="center"
+            android:tint="@color/white" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/item_type"
+        android:layout_width="@dimen/dp_145"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textColor="@color/tab_gray"
+        android:textSize="@dimen/sp_36"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/out_item_img"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="数码"></TextView>
+
+    <ImageView
+        android:id="@+id/item_degree"
+        android:layout_width="@dimen/dp_274"
+        android:layout_height="@dimen/dp_44"
+        android:layout_marginLeft="@dimen/dp_97"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/item_type"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_money"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:fontFamily="@font/post_no_bills_jaffna_medium"
+        android:gravity="center"
+        android:maxWidth="@dimen/dp_300"
+        android:textColor="@color/red_text"
+        android:textSize="@dimen/sp_48"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100.00"
+        android:layout_marginRight="@dimen/dp_24"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,116 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bill_top_bar_green"
-    tools:context=".BookKeep">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:id="@+id/topbar">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="grassTheme"
+            type="boolean" />
+    </data>
 
-        <ImageButton
-            android:layout_width="@dimen/dp_74"
-            android:layout_height="@dimen/dp_74"
-            android:background="@drawable/back"
-            android:layout_marginTop="@dimen/dp_5"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/dp_5"
-            android:id="@+id/backmenu"/>
-        <ImageView
-            android:layout_width="@dimen/dp_260"
-            android:layout_height="@dimen/dp_61"
-            android:src="@drawable/toplogo2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dp_15"/>
-        <ImageButton
-            android:layout_width="@dimen/dp_64"
-            android:layout_height="@dimen/dp_61"
-            android:background="@drawable/setting"
-            android:layout_marginTop="@dimen/dp_10"
-            android:layout_alignParentRight="true"
-            android:id="@+id/setting"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{grassTheme ? @color/grass_top_color : @color/main_background}"
+        tools:background="@color/main_background">
 
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginTop="@dimen/dp_100"
-        android:layout_marginBottom="@dimen/dp_20">
-        <Spinner
+        <LinearLayout
+            android:id="@+id/topbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_150"/>
+
+            <include
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:id="@+id/book_type_change"
+                android:spinnerMode="dropdown"
+                android:popupBackground="@drawable/radius_border"
+                android:layout_marginTop="@dimen/dp_42"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/topbar"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_80"
+            android:layout_marginRight="@dimen/dp_80"
+            android:id="@+id/book_line1">
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_6"
+                android:background="@{grassTheme ? @color/white :@color/light_green}"
+                tools:background="@color/light_green"/>
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/frag_record_gv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/book_line1"
+            android:numColumns="4"
+            android:paddingLeft="@dimen/dp_89"
+            android:paddingRight="@dimen/dp_89"
+            android:layout_marginTop="@dimen/dp_60" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_132"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@{grassTheme ? @color/grass_sure_color :@color/light_green}"
+            tools:background="@color/light_green"
+            android:orientation="horizontal"
+            android:id="@+id/bottombar"
+            android:gravity="center">
+            <ImageButton
+                android:layout_width="@dimen/dp_76"
+                android:layout_height="@dimen/dp_56"
+                android:background="@drawable/sure"
+                android:id="@+id/sureBtn" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/choose_wrap_line"
+            app:layout_constraintBottom_toTopOf="@id/bottombar"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp_50"
+            android:paddingLeft="@dimen/dp_30"
+            android:paddingRight="@dimen/dp_30">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_36"
+                tools:textColor="@color/light_green"
+                android:textColor="@{grassTheme ? @color/white :@color/light_green}"
+                android:text="包装"/>
+            <EditText
+                android:id="@+id/wrap_0"
+                android:layout_width="@dimen/dp_270"
+                android:layout_height="@dimen/dp_45"
+                android:textSize="@dimen/sp_36"
+                android:background="@drawable/ic_button_corner_shape"
+                android:gravity="center"
+                android:hint="塑料___件"
+                tools:textColorHint="@color/text_color_state_list_book"
+                android:textColorHint="@{grassTheme ? @colorStateList/text_color_state_list_grass :@colorStateList/text_color_state_list_book}"
+                android:layout_marginLeft="@dimen/dp_67"
+                android:textColor="@{grassTheme ? @colorStateList/text_color_state_list_grass :@colorStateList/text_color_state_list_book}"
+                android:backgroundTint="@{grassTheme ?@colorStateList/background_color_state_grass :@colorStateList/background_color_state_book}" />
+            <EditText
+                android:id="@+id/wrap_1"
+                android:layout_width="@dimen/dp_270"
+                android:layout_height="@dimen/dp_45"
+                android:textSize="@dimen/sp_36"
+                android:background="@drawable/ic_button_corner_shape"
+                android:gravity="center"
+                android:hint="纸类___件"
+                android:textColorHint="@{grassTheme ? @colorStateList/text_color_state_list_grass :@colorStateList/text_color_state_list_book}"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:textColor="@{grassTheme ? @colorStateList/text_color_state_list_grass :@colorStateList/text_color_state_list_book}"
+                android:backgroundTint="@{grassTheme ? @colorStateList/background_color_state_grass :@colorStateList/background_color_state_book}" />
+            <TextView
+                android:id="@+id/wrap_2"
+                android:layout_width="@dimen/dp_270"
+                android:layout_height="@dimen/dp_45"
+                android:textSize="@dimen/sp_36"
+                android:background="@drawable/ic_button_corner_shape"
+                android:gravity="center"
+                android:text="无"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:textColor="@{grassTheme ? @colorStateList/text_color_state_list_grass :@colorStateList/text_color_state_list_book}"
+                android:backgroundTint="@{grassTheme ? @colorStateList/background_color_state_grass :@colorStateList/background_color_state_book}"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/choose_isnew_line"
+            app:layout_constraintBottom_toTopOf="@id/choose_wrap_line"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp_50"
+            android:paddingLeft="@dimen/dp_30"
+            android:paddingRight="@dimen/dp_30">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_36"
+                android:textColor="@{grassTheme ? @color/white :@color/light_green}"
+                tools:textColor="@color/light_green"
+                android:text="来源"/>
+            <TextView
+                android:id="@+id/source_0"
+                android:layout_width="@dimen/dp_422"
+                android:layout_height="@dimen/dp_45"
+                android:textSize="@dimen/sp_36"
+                android:background="@drawable/ic_button_corner_shape"
+                android:gravity="center"
+                android:text="全新"
+                android:layout_marginLeft="@dimen/dp_67"
+                android:textColor="@{grassTheme ? @colorStateList/text_color_state_list_grass :@colorStateList/text_color_state_list_book}"
+                android:backgroundTint="@{grassTheme ? @colorStateList/background_color_state_grass :@colorStateList/background_color_state_book}"/>
+            <TextView
+                android:id="@+id/source_1"
+                android:layout_width="@dimen/dp_422"
+                android:layout_height="@dimen/dp_45"
+                android:textSize="@dimen/sp_36"
+                android:background="@drawable/ic_button_corner_shape"
+                android:gravity="center"
+                android:text="二手"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:textColor="@{grassTheme ? @colorStateList/text_color_state_list_grass :@colorStateList/text_color_state_list_book}"
+                android:backgroundTint="@{grassTheme ? @colorStateList/background_color_state_grass :@colorStateList/background_color_state_book}"/>
+        </LinearLayout>
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/choose_group"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:id="@+id/book_type_change"
-            android:spinnerMode="dropdown"
-            android:popupBackground="@drawable/radius_border"
-            android:layout_marginLeft="@dimen/dp_100"></Spinner>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_150"
-        android:id="@+id/book_line1">
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_5"
-            android:background="@color/green"/>
-    </LinearLayout>
-    <GridView
-        android:id="@+id/frag_record_gv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/book_line1"
-        android:background="@color/bill_top_bar_green"
-        android:numColumns="4"
-        android:paddingTop="@dimen/dp_10"
-        android:paddingBottom="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_30" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_209"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bottombar"
-        android:orientation="horizontal"
-        android:id="@+id/bottombar"
-        android:gravity="center">
-        <ImageButton
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_80"
-            android:background="@drawable/sure"
-            android:id="@+id/sureBtn"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_120"
-        android:layout_above="@+id/bottombar">
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/custom_edittext_background"
-            android:layout_weight="3"
-            android:hint="备注：期末聚餐，五角场"
-            android:gravity="left"
-            android:paddingLeft="@dimen/dp_15"
-            android:paddingTop="@dimen/dp_28"
-            android:singleLine="true"
-            android:id="@+id/itemname"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/custom_edittext_background"
-            android:layout_weight="1"
-            android:hint="金额"
-            android:gravity="left"
-            android:paddingLeft="@dimen/dp_15"
-            android:paddingTop="@dimen/dp_28"
-            android:singleLine="true"
-            android:id="@+id/itemmoney"/>
-    </LinearLayout>
-</RelativeLayout>
+            android:layout_height="wrap_content"
+            android:visibility="@{grassTheme ? View.GONE : View.VISIBLE}"
+            app:constraint_referenced_ids="choose_isnew_line,choose_wrap_line"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/choose_isnew_line"
+            android:layout_marginBottom="@dimen/dp_50"
+            app:layout_goneMarginBottom="0dp">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{grassTheme ? @drawable/custom_edittext_background_grass :@drawable/custom_edittext_background}"
+                android:layout_weight="2"
+                android:hint="备注："
+                android:gravity="left|center"
+                android:paddingLeft="@dimen/dp_35"
+                android:singleLine="true"
+                android:id="@+id/itemname"
+                android:textSize="@dimen/sp_36"
+                android:textColor="@{grassTheme ? @color/grass_edit_border :@color/edit_border}"
+                android:textColorHint="@{grassTheme ? @color/grass_edit_border :@color/edit_border}" />
+            <TextView
+                android:id="@+id/item_detail_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/dp_35"
+                android:textSize="@dimen/sp_36"
+                android:textColor="@color/white"
+                android:text="种类："
+                android:background="@{grassTheme ? @color/grass_edit_border :@color/edit_border}"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{grassTheme ? @drawable/custom_edittext_background_grass :@drawable/custom_edittext_background}"
+                android:layout_weight="1"
+                android:hint="价格："
+                android:gravity="left|center"
+                android:paddingLeft="@dimen/dp_35"
+                android:singleLine="true"
+                android:id="@+id/itemmoney"
+                android:textSize="@dimen/sp_36"
+                android:textColor="@{grassTheme ? @color/grass_edit_border :@color/edit_border}"
+                android:textColorHint="@{grassTheme ? @color/grass_edit_border :@color/edit_border}" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

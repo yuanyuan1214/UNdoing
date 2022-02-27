@@ -1,49 +1,26 @@
 package com.app.undoing.Database;
 
-public class AccountBean {
+import java.io.Serializable;
+
+public class AccountBean implements Serializable {
     int id;
     String typename;
     String itemname;
     float itemmoney;
-    int imagenum;
 
     int year;
     int month;
     int day;
     int week;
-    int water;
-    int land;
-    int air;
-    int mineral;
-    int animal;
+
+    int isnew;
+
+    float selfcarbon;
+    float wrapcarbon;
 
 
     public float getItemmoney() {
         return itemmoney;
-    }
-
-    public int getImagenum() {
-        return imagenum;
-    }
-
-    public int getAir() {
-        return air;
-    }
-
-    public int getAnimal() {
-        return animal;
-    }
-
-    public int getMineral() {
-        return mineral;
-    }
-
-    public int getLand() {
-        return land;
-    }
-
-    public int getWater() {
-        return water;
     }
 
     public int getYear() {
@@ -74,12 +51,29 @@ public class AccountBean {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public AccountBean() {
     }
 
-    public void setImagenum(int imagenum) {
-        this.imagenum = imagenum;
+    public AccountBean(int id, String typename, String itemname, float itemmoney, int year, int month, int day, int week, int isNew, float selfCarbon, float wrapCarbon) {
+        this.id = id;
+        this.typename = typename;
+        this.itemname = itemname;
+        this.itemmoney = itemmoney;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.week = week;
+        this.isnew = isNew;
+        this.selfcarbon = selfCarbon;
+        this.wrapcarbon = wrapCarbon;
+    }
+
+    public float getSelfCarbon() {
+        return selfcarbon;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setItemname(String itemname) {
@@ -94,38 +88,29 @@ public class AccountBean {
         this.itemmoney = itemmoney;
     }
 
-    public void setPoints(int water,int land,int air,int mineral,int animal) {
-        this.water=water;
-        this.land=land;
-        this.air=air;
-        this.mineral=mineral;
-        this.animal=animal;
+    public float getWrapCarbon() {
+        return wrapcarbon;
     }
 
-    public void setDate( int year,int month,int day,int week) {
-        this.year=year;
-        this.month=month;
-        this.day=day;
-        this.week=week;
+    public double getTotalCarbon() {return  selfcarbon+wrapcarbon;}
+
+    public int getIsNew() {
+        return isnew;
     }
 
-    public AccountBean(){}
+    public void setIsNew(int isNew) {
+        this.isnew = isNew;
+    }
 
-    public AccountBean(int id,String typename,String itemname,float itemmoney,int imagenum,int year,int month,int day,int week,int water,int land,int air,int mineral,int animal)
-    {
-        this.id=id;
-        this.typename=typename;
-        this.itemname=itemname;
-        this.itemmoney=itemmoney;
-        this.imagenum=imagenum;
-        this.year=year;
-        this.month=month;
-        this.day=day;
-        this.week=week;
-        this.water=water;
-        this.land=land;
-        this.air=air;
-        this.mineral=mineral;
-        this.animal=animal;
+    public void setDate(int year, int month, int day, int week) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.week = week;
+    }
+
+    public void setCarbon(float selfCarbon, float wrapCarbon) {
+        this.selfcarbon = selfCarbon;
+        this.wrapcarbon = wrapCarbon;
     }
 }

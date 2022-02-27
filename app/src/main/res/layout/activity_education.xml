@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_150"/>
+
+    <include android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_40"
+        android:textColor="@color/font_gray"
+        android:text="科普信息"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dp_113"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/education_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_49"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

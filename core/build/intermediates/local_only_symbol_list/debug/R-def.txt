@@ -1,0 +1,8 @@
+R_DEF: Internal format may change without notice
+local
+id btn
+id btn_stop
+id txtLog
+id txtResult
+layout common_mini
+string app_name

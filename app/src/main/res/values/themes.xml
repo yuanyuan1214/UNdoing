@@ -10,6 +10,7 @@
     <style name="Theme.UNdoing.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
 
     <style name="Theme.UNdoing.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

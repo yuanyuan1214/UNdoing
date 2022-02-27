@@ -387,6 +387,8 @@
 	<dimen name="dp_600">228.5714dp</dimen>
 	<dimen name="dp_640">243.8095dp</dimen>
 	<dimen name="dp_720">274.2857dp</dimen>
+	<dimen name="dp_860">327.6190dp</dimen>
+	<dimen name="dp_960">365.7142dp</dimen>
 	<dimen name="sp_6">2.2857sp</dimen>
 	<dimen name="sp_7">2.6667sp</dimen>
 	<dimen name="sp_8">3.0476sp</dimen>
@@ -416,4 +418,10 @@
 	<dimen name="sp_40">15.2381sp</dimen>
 	<dimen name="sp_42">16.0000sp</dimen>
 	<dimen name="sp_48">18.2857sp</dimen>
+	<dimen name="sp_54">20.5714sp</dimen>
+	<dimen name="activity_horizontal_margin">6.0952dp</dimen>
+	<dimen name="activity_vertical_margin">6.0952dp</dimen>
+	<dimen name="appbar_padding">6.0952dp</dimen>
+	<dimen name="fab_margin">6.0952dp</dimen>
+	<dimen name="appbar_padding_top">3.0476dp</dimen>
 </resources>

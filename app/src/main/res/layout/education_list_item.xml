@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.app.undoing.extension.RoundedCornerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_960"
+    android:layout_height="@dimen/dp_370"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@drawable/toplogo"
+    android:id="@+id/education_item_background"
+    android:layout_marginBottom="@dimen/dp_31">
+    <TextView android:id="@+id/education_item_text"
+        android:layout_width="@dimen/dp_315"
+        android:layout_height="@dimen/dp_370"
+        android:textSize="@dimen/sp_40"
+        android:textColor="@color/white"
+        android:gravity="center"
+        tools:text="服饰生产的环境影响"
+        android:background="@color/education_item"/>
+</com.app.undoing.extension.RoundedCornerLayout>
